@@ -1,10 +1,62 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import {
+  Router,
+  RouterOutlet,
+  ActivatedRoute,
+  NavigationEnd,
+} from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { filter, map } from 'rxjs';
+
+import { Header as HeaderComponent } from './core/components/header/header';
+import { Footer as FooterComponent } from './core/components/footer/footer';
+
+import { Translation } from './shared/services/translation/translation';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {}
+export class App {
+  private router = inject(Router);
+  private titleService = inject(Title);
+  private translationService = inject(Translation);
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter((event: any) => event instanceof NavigationEnd),
+        map(() => {
+          let route: ActivatedRoute = this.router.routerState.root;
+          let routeTitle = '';
+
+          while (route!.firstChild) {
+            route = route.firstChild;
+          }
+
+          if (route.snapshot.data['title']) {
+            routeTitle = route!.snapshot.data['title'];
+          }
+
+          return routeTitle;
+        })
+      )
+      .subscribe((title: string) => {
+        if (title) {
+          if (title === 'APP.TITLE') {
+            this.titleService.setTitle(
+              this.translationService.instant('APP.TITLE')
+            );
+          } else {
+            this.titleService.setTitle(
+              `${this.translationService.instant(
+                title
+              )} - ${this.translationService.instant('APP.TITLE')}`
+            );
+          }
+        }
+      });
+  }
+}

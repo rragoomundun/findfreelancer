@@ -1,0 +1,13 @@
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+
+@Component({
+  selector: 'app-footer',
+  imports: [TranslateModule],
+  templateUrl: './footer.html',
+  styleUrl: './footer.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class Footer {
+  currentYear = signal(new Date().getFullYear());
+}

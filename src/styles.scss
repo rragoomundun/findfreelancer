@@ -3,8 +3,87 @@
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
 
+/* Custom variables */
+:root {
+  --app-shadow-blur: 10px;
+  --app-shadow-spread: 5px;
+  --app-shadow-color: #ddd;
+  --app-shadow-color-dark: #777;
+
+  --app-color-white: #fff;
+  --app-color-primary: #104c68;
+  --app-color-primary-hover: #0d6791;
+
+  --app-transition-time: 0.2s;
+}
+
 /* Custom CSS */
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
 body {
   font-family: Inter;
+}
+
+.app-auth-card {
+  max-width: 400px;
+  margin: 50px auto;
+  border: none;
+  box-shadow: 0px 0px var(--app-shadow-blur) var(--app-shadow-spread)
+    var(--app-shadow-color);
+
+  .card-title {
+    margin: 1.5rem 0;
+  }
+
+  .card-body {
+    padding-top: 0;
+  }
+}
+
+.app-logo {
+  font-weight: bold !important;
+  font-style: italic !important;
+}
+
+/* Bootstrap customization */
+.input-group {
+  .form-control {
+    border-radius: var(--bs-border-radius) !important;
+  }
+
+  .form-control,
+  .form-select,
+  .form-floating {
+    transition: var(--app-transition-time);
+  }
+
+  .form-control:focus,
+  .form-select:focus,
+  .form-floating:focus-within {
+    box-shadow: none;
+    border-color: var(--bs-body-color);
+    transition: var(--app-transition-time);
+  }
+}
+
+.btn,
+.btn:disabled,
+.btn:hover {
+  transition: var(--app-transition-time);
+}
+
+.btn-primary,
+.btn-primary:disabled {
+  border-color: var(--app-color-primary);
+  background-color: var(--app-color-primary);
+}
+
+.btn-primary:hover {
+  border-color: var(--app-color-primary-hover);
+  background-color: var(--app-color-primary-hover);
 }
