@@ -1,0 +1,53 @@
+.navbar.navbar-expand-lg {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0px 0px var(--app-shadow-blur) var(--app-shadow-spread)
+    var(--app-shadow-color);
+  background-color: var(--app-color-primary);
+  padding: 0;
+
+  .app-logo {
+    text-decoration: none;
+  }
+
+  .navbar-toggler {
+    box-shadow: none;
+    border: none;
+    color: var(--app-color-white);
+  }
+
+  a {
+    color: var(--app-color-white);
+    padding: 1rem;
+    transition: var(--app-transition-time);
+  }
+
+  a:hover {
+    background-color: var(--app-color-primary-hover);
+    transition: var(--app-transition-time);
+  }
+
+  form {
+    @media screen and (width >= 992px) {
+      width: 600px;
+      margin: auto;
+    }
+
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border: none;
+    }
+
+    button {
+      background-color: var(--app-color-white);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    button:hover {
+      background-color: var(--bs-gray-200);
+    }
+  }
+}

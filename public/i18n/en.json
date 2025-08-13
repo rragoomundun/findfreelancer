@@ -1,0 +1,43 @@
+{
+  "APP": {
+    "TITLE": "FindFreelancer",
+    "AUTHOR": "Raphael RAGOOMUNDUN"
+  },
+  "GENERAL": {
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "E-Mail",
+    "PASSWORD": "Password",
+    "PASSWORD_CONFIRMATION": "Password Confirmation",
+    "ERRORS": {
+      "NO_ACCOUNT_FOR_EMAIL": "There are no account associated to this e-mail",
+      "NOT_EMAIL": "This e-mail address is invalid.",
+      "EMAIL_IN_USE": "This e-mail address is already in use.",
+      "PASSWORD_MIN_LENGTH_8": "The password must have at least 8 characters.",
+      "PASSWORD_NOT_STRONG": "The password is not strong enough. A strong password must contains at least eight characters, one uppercase letter, one lowercase letter, one number, and one special character.",
+      "PASSWORD_CONFIRMATION_NO_MATCH": "The confirmed password does not match the password."
+    }
+  },
+  "HEADER": {
+    "SEARCH": "Search for freelancers..."
+  },
+  "FOOTER": {
+    "PRIVACY": "Privacy Policy",
+    "TOS": "Terms of Use"
+  },
+  "REGISTER_PAGE": {
+    "TITLE": "Register on FindFreelancer",
+    "TERMS": "By registering on FindFreelancer you agree to our <a href='https://findfreelancer.com/terms' target='_blank'>Terms of Service</a> and <a href='https://markedit.net/privacy' target='_blank'>Privacy Policy</a>.",
+    "REGISTER": "Register",
+    "REGISTRATION": "Registration...",
+    "REGISTRATION_SUCCESSFUL": "Registration successful. An email has been sent to your address. Consult it to confirm your account.",
+    "ERRORS": {
+      "ACCOUNT_CREATION": "Impossible to create your account. Try again later."
+    }
+  },
+  "HOME_PAGE": {
+    "TITLE": "Find the best freelancers"
+  }
+}
