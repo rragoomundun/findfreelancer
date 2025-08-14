@@ -28,10 +28,22 @@
 
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/auth/login">Login</a>
+            <a
+              (click)="hideHamburgerMenu()"
+              class="nav-link active"
+              routerLink="/auth/login"
+            >
+              {{ "GENERAL.LOGIN" | translate }}
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/auth/register">Register</a>
+            <a
+              (click)="hideHamburgerMenu()"
+              class="nav-link"
+              routerLink="/auth/register"
+            >
+              {{ "GENERAL.REGISTER" | translate }}
+            </a>
           </li>
         </ul>
       </div>

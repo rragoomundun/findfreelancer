@@ -19,4 +19,12 @@ export class Auth {
   }): Observable<Object | null> {
     return this.http.post(`${this.API_PREFIX}/register`, params);
   }
+
+  registerConfirm(confirmationToken: string): Observable<Object> {
+    return this.http.post(
+      `${this.API_PREFIX}/register/confirm/${confirmationToken}`,
+      {},
+      { withCredentials: true }
+    );
+  }
 }

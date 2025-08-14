@@ -9,10 +9,7 @@ import {
   withFetch,
   withInterceptors,
 } from '@angular/common/http';
-import {
-  provideTranslateService,
-  provideTranslateLoader,
-} from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import {
   provideClientHydration,
