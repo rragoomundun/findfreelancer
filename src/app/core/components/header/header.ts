@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 import { Freelancer } from '../../../shared/models/Freelancer';
 
 import { AppState } from '../../../shared/store/app.state';
+import * as FreelancerActions from '../../../shared/store/freelancer/freelancer.actions';
 import { selectFreelancer } from '../../../shared/store/freelancer/freelancer.selectors';
 
 @Component({
@@ -45,11 +46,15 @@ export class Header {
   onWindowClick(event: any): void {
     const header = document.querySelector('header');
     const navbarTogglerEl = document.querySelector(
-      '.navbar-collapse.collapse.show'
+      '.navbar-collapse.collapse.show',
     );
 
     if (header?.contains(event.target) === false && navbarTogglerEl) {
       this.hideHamburgerMenu();
     }
+  }
+
+  onLogoutClick(): void {
+    this.store.dispatch(FreelancerActions.logoutFreelancer());
   }
 }

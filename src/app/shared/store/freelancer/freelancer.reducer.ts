@@ -24,5 +24,10 @@ export const freelancerReducer = createReducer(
     ...state,
     freelancer: null,
     onGetFreelancer: 'error',
-  }))
+  })),
+  on(FreelancerActions.logoutFreelancer, (state) => ({
+    ...state,
+    freelancer: null,
+    onGetFreelancer: 'false',
+  })),
 );
