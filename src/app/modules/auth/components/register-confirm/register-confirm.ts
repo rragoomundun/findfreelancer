@@ -1,4 +1,11 @@
-import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
@@ -10,6 +17,7 @@ import { Auth as AuthService } from '../../services/auth/auth';
   imports: [TranslateModule],
   templateUrl: './register-confirm.html',
   styleUrl: './register-confirm.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterConfirm implements OnInit {
   private authService = inject(AuthService);

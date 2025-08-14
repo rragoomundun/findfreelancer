@@ -43,6 +43,15 @@
     "SUCCESS": "Your account has been confirmed. You are going to be redirected...",
     "ERROR": "Impossible to confirm this account."
   },
+  "LOGIN_PAGE": {
+    "TITLE": "Login on FindFreelancer",
+    "LOGIN...": "Login...",
+    "PASSWORD_FORGOTTEN": "Password forgotten?",
+    "ERRORS": {
+      "INVALID": "The data entered is invalid.",
+      "UNCONFIRMED": "This account is unconfirmed."
+    }
+  },
   "HOME_PAGE": {
     "TITLE": "Find the best freelancers"
   }

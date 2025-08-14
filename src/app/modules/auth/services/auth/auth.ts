@@ -27,4 +27,13 @@ export class Auth {
       { withCredentials: true }
     );
   }
+
+  login(params: {
+    email: string;
+    password: string;
+  }): Observable<Object | null> {
+    return this.http.post(`${this.API_PREFIX}/login`, params, {
+      withCredentials: true,
+    });
+  }
 }
