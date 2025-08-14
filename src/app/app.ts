@@ -1,12 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   Router,
   RouterOutlet,
   ActivatedRoute,
   NavigationEnd,
 } from '@angular/router';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { filter, map } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { AppState } from './shared/store/app.state';
+
+import * as FreelancerActions from './shared/store/freelancer/freelancer.actions';
 
 import { Header as HeaderComponent } from './core/components/header/header';
 import { Footer as FooterComponent } from './core/components/footer/footer';
@@ -19,7 +25,8 @@ import { Translation } from './shared/services/translation/translation';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
+export class App implements OnInit {
+  private store = inject(Store<AppState>);
   private router = inject(Router);
   private titleService = inject(Title);
   private translationService = inject(Translation);
@@ -58,5 +65,9 @@ export class App {
           }
         }
       });
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(FreelancerActions.getFreelancer());
   }
 }

@@ -20,8 +20,8 @@ export class Auth {
     return this.http.post(`${this.API_PREFIX}/register`, params);
   }
 
-  registerConfirm(confirmationToken: string): Observable<Object> {
-    return this.http.post(
+  registerConfirm(confirmationToken: string): Observable<null> {
+    return this.http.post<null>(
       `${this.API_PREFIX}/register/confirm/${confirmationToken}`,
       {},
       { withCredentials: true }
@@ -32,7 +32,7 @@ export class Auth {
     email: string;
     password: string;
   }): Observable<Object | null> {
-    return this.http.post(`${this.API_PREFIX}/login`, params, {
+    return this.http.post<Object | null>(`${this.API_PREFIX}/login`, params, {
       withCredentials: true,
     });
   }
