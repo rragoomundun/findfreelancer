@@ -13,8 +13,23 @@
       >
         <span id="this-hamburger-icon" class="fa-solid fa-bars"></span>
       </button>
+
+      <!-- Desktop search form -->
+      <form id="this-desktop-search" class="d-none d-lg-flex" role="search">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="{{ 'HEADER.SEARCH' | translate }}"
+          aria-label="Search"
+        />
+        <button class="btn" type="submit">
+          <span class="fa-solid fas fa-search"></span>
+        </button>
+      </form>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex" role="search">
+        <!-- Mobile search form -->
+        <form class="d-flex d-lg-none mb-2" role="search">
           <input
             class="form-control"
             type="search"
@@ -26,25 +41,54 @@
           </button>
         </form>
 
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a
-              (click)="hideHamburgerMenu()"
-              class="nav-link active"
-              routerLink="/auth/login"
-            >
-              {{ "GENERAL.LOGIN" | translate }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              (click)="hideHamburgerMenu()"
-              class="nav-link"
-              routerLink="/auth/register"
-            >
-              {{ "GENERAL.REGISTER" | translate }}
-            </a>
-          </li>
+        <ul id="this-freelancer-menu" class="navbar-nav mb-2 mb-lg-0">
+          @if ((freelancer$ | async) === null) {
+            <li class="nav-item">
+              <a
+                (click)="hideHamburgerMenu()"
+                class="nav-link active"
+                routerLink="/auth/login"
+              >
+                {{ "GENERAL.LOGIN" | translate }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                (click)="hideHamburgerMenu()"
+                class="nav-link"
+                routerLink="/auth/register"
+              >
+                {{ "GENERAL.REGISTER" | translate }}
+              </a>
+            </li>
+          } @else {
+            <li class="nav-item">
+              <a
+                id="this-freelancer-name"
+                href="javascript:void(0)"
+                class="nav-link"
+              >
+                @if ((freelancer$ | async)?.image) {
+                  <img
+                    src="(freelancer$ | async)?.image"
+                    [alt]="
+                      (freelancer$ | async)?.firstName +
+                      ' ' +
+                      (freelancer$ | async)?.lastName +
+                      ' image'
+                    "
+                  />
+                } @else {
+                  <span class="fa-regular fa-circle-user"></span>
+                }
+
+                &nbsp;
+
+                {{ (freelancer$ | async)?.firstName }}
+                {{ (freelancer$ | async)?.lastName }}
+              </a>
+            </li>
+          }
         </ul>
       </div>
     </div>

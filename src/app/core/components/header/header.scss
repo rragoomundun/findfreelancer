@@ -8,6 +8,10 @@
   background-color: var(--app-color-primary);
   padding: 0;
 
+  .container-fluid {
+    padding: 0;
+  }
+
   .app-logo {
     text-decoration: none;
   }
@@ -19,8 +23,11 @@
   }
 
   a {
+    display: flex;
+    height: 56px;
+    align-items: center;
     color: var(--app-color-white);
-    padding: 1rem;
+    padding: 0 1rem;
     transition: var(--app-transition-time);
   }
 
@@ -29,11 +36,29 @@
     transition: var(--app-transition-time);
   }
 
-  form {
-    @media screen and (width >= 992px) {
-      width: 600px;
-      margin: auto;
+  /* Desktop centered search bar */
+  #this-desktop-search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+  }
+
+  #this-freelancer-menu {
+    margin-left: auto;
+  }
+
+  #this-freelancer-name {
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 100%;
     }
+  }
+
+  form {
+    padding: 0 1rem;
 
     input {
       border-top-right-radius: 0;

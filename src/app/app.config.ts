@@ -15,6 +15,11 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+
+import { freelancerReducer } from './shared/store/freelancer/freelancer.reducer';
+import { FreelancerEffects } from './shared/store/freelancer/freelancer.effects';
 
 import { routes } from './app.routes';
 
@@ -35,5 +40,7 @@ export const appConfig: ApplicationConfig = {
     }),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
+    provideStore({ freelancer: freelancerReducer }),
+    provideEffects([FreelancerEffects]),
   ],
 };
