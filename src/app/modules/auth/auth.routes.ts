@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Register as RegisterComponent } from './components/register/register';
 import { RegisterConfirm as RegisterConfirmComponent } from './components/register-confirm/register-confirm';
 import { Login as LoginComponent } from './components/login/login';
+import { PasswordForgotten as PasswordForgottenComponent } from './components/password-forgotten/password-forgotten';
 
 const routes: Routes = [
   {
@@ -20,6 +21,16 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     data: { title: 'LOGIN_PAGE.TITLE' },
+  },
+  {
+    path: 'password',
+    children: [
+      {
+        path: 'forgotten',
+        component: PasswordForgottenComponent,
+        data: { title: 'PASSWORD_FORGOTTEN_PAGE.TITLE' },
+      },
+    ],
   },
 ];
 
