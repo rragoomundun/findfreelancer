@@ -42,4 +42,8 @@ export class Auth {
       withCredentials: true,
     });
   }
+
+  passwordForgotten(params: { email: string }): Observable<null> {
+    return this.http.post<null>(`${this.API_PREFIX}/password/forgot`, params);
+  }
 }
