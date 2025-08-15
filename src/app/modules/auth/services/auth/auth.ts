@@ -24,7 +24,7 @@ export class Auth {
     return this.http.post<null>(
       `${this.API_PREFIX}/register/confirm/${confirmationToken}`,
       {},
-      { withCredentials: true }
+      { withCredentials: true },
     );
   }
 
@@ -33,6 +33,12 @@ export class Auth {
     password: string;
   }): Observable<Object | null> {
     return this.http.post<Object | null>(`${this.API_PREFIX}/login`, params, {
+      withCredentials: true,
+    });
+  }
+
+  logout(): Observable<any> {
+    return this.http.get<any>(`${this.API_PREFIX}/logout`, {
       withCredentials: true,
     });
   }

@@ -6,6 +6,7 @@
   "GENERAL": {
     "LOGIN": "Login",
     "REGISTER": "Register",
+    "LOGOUT": "Logout",
     "FIRST_NAME": "First Name",
     "LAST_NAME": "Last Name",
     "EMAIL": "E-Mail",
