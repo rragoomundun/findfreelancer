@@ -20,7 +20,7 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
-import { provideStore, Store } from '@ngrx/store';
+import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 
 import { freelancerReducer } from './shared/store/freelancer/freelancer.reducer';
