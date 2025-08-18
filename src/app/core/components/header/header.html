@@ -42,7 +42,7 @@
         </form>
 
         <ul id="this-freelancer-menu" class="navbar-nav mb-2 mb-lg-0">
-          @if ((freelancer$ | async) === null) {
+          @if ((onGetFreelancer$ | async) === "error") {
             <li class="nav-item">
               <a
                 (click)="hideHamburgerMenu()"
@@ -61,7 +61,7 @@
                 {{ "GENERAL.REGISTER" | translate }}
               </a>
             </li>
-          } @else {
+          } @else if ((onGetFreelancer$ | async) === "success") {
             <li class="nav-item dropdown">
               <a
                 id="this-freelancer-name"

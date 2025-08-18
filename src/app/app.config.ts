@@ -1,9 +1,14 @@
 import {
   ApplicationConfig,
+  inject,
+  provideAppInitializer,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+} from '@angular/router';
 import {
   provideHttpClient,
   withFetch,
@@ -25,6 +30,8 @@ import { routes } from './app.routes';
 
 import { apiInterceptor } from './core/interceptors/api/api-interceptor';
 
+import { App as AppService } from './shared/services/app/app';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -38,7 +45,11 @@ export const appConfig: ApplicationConfig = {
       fallbackLang: 'en',
       lang: 'en',
     }),
-    provideRouter(routes),
+    provideRouter(routes, withEnabledBlockingInitialNavigation()),
+    provideAppInitializer(() => {
+      const appService = inject(AppService);
+      return appService.init();
+    }),
     provideClientHydration(withEventReplay()),
     provideStore({ freelancer: freelancerReducer }),
     provideEffects([FreelancerEffects]),
