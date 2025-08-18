@@ -14,7 +14,10 @@ import { Freelancer } from '../../../shared/models/Freelancer';
 
 import { AppState } from '../../../shared/store/app.state';
 import * as FreelancerActions from '../../../shared/store/freelancer/freelancer.actions';
-import { selectFreelancer } from '../../../shared/store/freelancer/freelancer.selectors';
+import {
+  selectFreelancer,
+  selectOnGetFreelancer,
+} from '../../../shared/store/freelancer/freelancer.selectors';
 
 @Component({
   selector: 'app-header',
@@ -26,10 +29,12 @@ import { selectFreelancer } from '../../../shared/store/freelancer/freelancer.se
 export class Header {
   private store = inject(Store<AppState>);
 
-  freelancer$: Observable<Freelancer | null>;
+  freelancer$: Observable<Freelancer | null | undefined>;
+  onGetFreelancer$: Observable<string>;
 
   constructor() {
     this.freelancer$ = this.store.select(selectFreelancer);
+    this.onGetFreelancer$ = this.store.select(selectOnGetFreelancer);
   }
 
   hideHamburgerMenu(): void {

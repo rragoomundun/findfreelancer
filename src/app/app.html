@@ -1,7 +1,13 @@
-<app-header></app-header>
+@if (
+  appService.platform() === "server" || (onGetFreelancer$ | async) === "true"
+) {
+  <div id="this-loader"></div>
+} @else {
+  <app-header></app-header>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+}
