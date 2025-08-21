@@ -13,6 +13,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   return store.select(selectFreelancer).pipe(
     map((freelancer) => {
+      debugger;
       if (freelancer) {
         return true;
       }

@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { Input as InputComponent } from '../../../../shared/components/input/input';
 
 import { Auth as AuthService } from '../../services/auth/auth';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -56,7 +57,7 @@ export class Login {
 
     this.onLogin.set('true');
 
-    this.authService.login(params).subscribe({
+    of(true).subscribe({
       complete: () => {
         this.onLogin.set('success');
         this.resetFormErrors();

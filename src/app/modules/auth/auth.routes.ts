@@ -7,7 +7,7 @@ import { Login as LoginComponent } from './components/login/login';
 import { PasswordForgotten as PasswordForgottenComponent } from './components/password-forgotten/password-forgotten';
 import { ResetPassword as ResetPasswordComponent } from './components/reset-password/reset-password';
 
-const routes: Routes = [
+export const authRoutes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
@@ -39,9 +39,3 @@ const routes: Routes = [
     ],
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class AuthRoutes {}

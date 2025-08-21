@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, map, take } from 'rxjs';
+import { filter, map, take, tap } from 'rxjs';
 
 import { AppState } from '../../../shared/store/app.state';
 
@@ -16,9 +16,7 @@ export const unauthGuard: CanActivateFn = (route, state) => {
       if (freelancer === null) {
         return true;
       }
-
-      router.navigate(['/']);
-      return false;
+      return router.createUrlTree(['/']);
     }),
   );
 };
