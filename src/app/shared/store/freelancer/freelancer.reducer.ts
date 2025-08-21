@@ -5,7 +5,7 @@ import { FreelancerState } from './freelancer.state';
 import * as FreelancerActions from './freelancer.actions';
 
 const initialState: FreelancerState = {
-  freelancer: undefined,
+  freelancer: null,
   onGetFreelancer: 'false',
 };
 

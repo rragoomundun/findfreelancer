@@ -6,13 +6,13 @@ export const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('./modules/auth/auth-module').then((m) => m.AuthModule),
+      import('./modules/auth/auth.routes').then((m) => m.authRoutes),
     canActivate: [unauthGuard],
   },
   {
     path: '',
     loadChildren: () =>
-      import('./modules/home/home-module').then((m) => m.HomeModule),
+      import('./modules/home/home.routes').then((m) => m.homeRoutes),
   },
   {
     path: '**',

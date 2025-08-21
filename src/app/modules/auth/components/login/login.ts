@@ -32,7 +32,7 @@ export class Login {
     new FormGroup({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
-    })
+    }),
   );
   formErrors = signal({
     email: '',

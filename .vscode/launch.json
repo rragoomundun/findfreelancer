@@ -3,6 +3,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Firefox",
+      "type": "firefox",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "preLaunchTask": "npm: start",
+      "webRoot": "${workspaceFolder}/client"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",
