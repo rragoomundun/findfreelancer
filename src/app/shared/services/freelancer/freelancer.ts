@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 
 import { Freelancer as FreelancerModel } from '../../models/Freelancer';
 
@@ -18,7 +18,9 @@ export class Freelancer {
       firstName: 'asdfasdf',
       lastName: 'asdfasdf',
       email: 'asdf@asdf.com',
-      image: 'test',}); //this.http.get<FreelancerModel>(this.API_PREFIX, {
+      image: 'test',}).pipe(
+        delay(3000),
+      ); //this.http.get<FreelancerModel>(this.API_PREFIX, {
       // withCredentials: true,
     // });
   }

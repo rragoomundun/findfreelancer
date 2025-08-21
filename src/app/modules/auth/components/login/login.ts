@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
 import { Input as InputComponent } from '../../../../shared/components/input/input';
 
 import { Auth as AuthService } from '../../services/auth/auth';
-import { of } from 'rxjs';
+import { delay, of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -57,7 +57,9 @@ export class Login {
 
     this.onLogin.set('true');
 
-    of(true).subscribe({
+    of(true).pipe(
+      delay(3000),
+    ).subscribe({
       complete: () => {
         this.onLogin.set('success');
         this.resetFormErrors();
