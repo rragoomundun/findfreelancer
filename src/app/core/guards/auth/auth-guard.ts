@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs';
+import { filter, map } from 'rxjs';
 
 import { AppState } from '../../../shared/store/app.state';
 
@@ -12,6 +12,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   return store.select(selectFreelancer).pipe(
+    filter((freelancer) => freelancer !== undefined),
     map((freelancer) => {
       if (freelancer) {
         return true;
