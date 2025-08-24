@@ -16,6 +16,7 @@
     "SUBMITTING": "Submitting",
     "MODIFY": "Modify",
     "MODIFYING": "Modyfying...",
+    "HOUR": "h",
     "ERRORS": {
       "NO_ACCOUNT_FOR_EMAIL": "There are no account associated to this e-mail.",
       "NOT_EMAIL": "This e-mail address is invalid.",
@@ -76,6 +77,7 @@
     }
   },
   "HOME_PAGE": {
-    "TITLE": "Find the best freelancers"
+    "TITLE": "Find the best freelancers",
+    "NEW_FREELANCERS": "New Freelancers"
   }
 }
