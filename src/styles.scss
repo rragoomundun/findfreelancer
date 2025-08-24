@@ -8,7 +8,7 @@
   --app-shadow-blur: 10px;
   --app-shadow-spread: 5px;
   --app-shadow-color: #ddd;
-  --app-shadow-color-dark: #777;
+  --app-shadow-color-dark: #ccc;
 
   --app-color-white: #fff;
   --app-color-primary: #104c68;
@@ -51,6 +51,12 @@ body {
 }
 
 /* Bootstrap customization */
+.card {
+  border: none;
+  box-shadow: 0px 0px var(--app-shadow-blur) var(--app-shadow-spread)
+    var(--app-shadow-color);
+}
+
 .input-group {
   .form-control {
     border-radius: var(--bs-border-radius) !important;
@@ -86,4 +92,26 @@ body {
 .btn-primary:hover {
   border-color: var(--app-color-primary-hover);
   background-color: var(--app-color-primary-hover);
+}
+
+.carousel {
+  .carousel-inner {
+    border-radius: var(--bs-border-radius) !important;
+    box-shadow: 0px 0px var(--app-shadow-blur) var(--app-shadow-spread)
+      var(--app-shadow-color);
+  }
+
+  .carousel-indicators {
+    button {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 100%;
+    }
+  }
+
+  .picsum-img-wrapper {
+    img {
+      width: 100%;
+    }
+  }
 }
