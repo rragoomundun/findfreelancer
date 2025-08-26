@@ -58,10 +58,6 @@ export class SettingsIdentity {
       selectOnUpdateFreelancerSettingsIdentity,
     );
 
-    this.updateFreelancerSettingsIdentityError.subscribe((error) => {
-      console.log(error);
-    });
-
     this.freelancer
       .pipe(take(1))
       .subscribe((freelancer: Freelancer | null | undefined) => {
