@@ -51,7 +51,6 @@ export class SettingsIdentity {
     firstName: '',
     lastName: '',
   });
-  // onIdentityUpdate = signal('false');
 
   constructor() {
     this.freelancer = this.store.select(selectFreelancer);
@@ -66,6 +65,10 @@ export class SettingsIdentity {
         this.formGroup().controls.firstName.setValue(freelancer!?.firstName);
         this.formGroup().controls.lastName.setValue(freelancer!?.lastName);
       });
+
+    this.store.dispatch(
+      FreelancerActions.updateFreelancerSettingsIdentityInit(),
+    );
   }
 
   onSubmit(): void {

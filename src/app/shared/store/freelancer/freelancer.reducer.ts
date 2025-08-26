@@ -31,6 +31,10 @@ export const freelancerReducer = createReducer(
     freelancer: null,
     onGetFreelancer: 'false',
   })),
+  on(FreelancerActions.updateFreelancerSettingsIdentityInit, (state) => ({
+    ...state,
+    onUpdateFreelancerSettingsIdentity: 'false',
+  })),
   on(FreelancerActions.updateFreelancerSettingsIdentity, (state) => ({
     ...state,
     onUpdateFreelancerSettingsIdentity: 'true',

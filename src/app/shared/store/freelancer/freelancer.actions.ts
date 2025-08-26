@@ -11,6 +11,9 @@ export const getFreelancerError = createAction(
   '[Freelancer] Get Freelancer Error',
 );
 export const logoutFreelancer = createAction('[Freelancer] Logout');
+export const updateFreelancerSettingsIdentityInit = createAction(
+  '[Freelancer] Update Freelancer Settings Identity Init',
+);
 export const updateFreelancerSettingsIdentity = createAction(
   '[Freelancer] Update Freelancer Settings Identity',
   props<{ email: string; firstName: string; lastName: string }>(),
