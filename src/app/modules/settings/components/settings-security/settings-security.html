@@ -1,1 +1,42 @@
-<p>settings-security works!</p>
+<form [formGroup]="formGroup()" (submit)="onSubmit()">
+  <div class="mb-3">
+    <app-input
+      [id]="'this-password'"
+      [label]="'GENERAL.PASSWORD' | translate"
+      [type]="'password'"
+      [control]="'password'"
+      [error]="formErrors().password"
+    ></app-input>
+  </div>
+
+  <div class="mb-3">
+    <app-input
+      [id]="'this-password-confirmation'"
+      [label]="'GENERAL.PASSWORD_CONFIRMATION' | translate"
+      [type]="'password'"
+      [control]="'passwordConfirmation'"
+      [error]="formErrors().passwordConfirmation"
+    ></app-input>
+  </div>
+
+  <div class="text-center">
+    @if (onUpdatePassword() === "success") {
+      <small class="text-success">
+        {{ "SETTINGS_PAGE.TABS.SECURITY.PASSWORD_UPDATED" | translate }}
+      </small>
+
+      <br /><br />
+    }
+
+    @if (onUpdatePassword() === "true") {
+      <button [disabled]="true" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+        <span>{{ "GENERAL.MODIFYING" | translate }}</span>
+      </button>
+    } @else {
+      <button [disabled]="formGroup().invalid" class="btn btn-primary">
+        {{ "GENERAL.MODIFY" | translate }}
+      </button>
+    }
+  </div>
+</form>

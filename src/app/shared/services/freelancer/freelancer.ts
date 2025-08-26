@@ -27,4 +27,13 @@ export class Freelancer {
       withCredentials: true,
     });
   }
+
+  updateSecurity(params: {
+    password: string;
+    passwordConfirmation: string;
+  }): Observable<null> {
+    return this.http.put<null>(`${this.API_PREFIX}/settings/security`, params, {
+      withCredentials: true,
+    });
+  }
 }

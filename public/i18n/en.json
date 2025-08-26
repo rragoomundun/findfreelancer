@@ -91,7 +91,8 @@
         "INFORMATIONS_UPDATED": "Informations updated."
       },
       "SECURITY": {
-        "TITLE": "Security"
+        "TITLE": "Security",
+        "PASSWORD_UPDATED": "Password updated."
       },
       "DELETE_ACCOUNT": {
         "TITLE": "Delete Account"
