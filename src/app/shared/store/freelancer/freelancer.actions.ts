@@ -24,4 +24,5 @@ export const updateFreelancerSettingsIdentitySuccess = createAction(
 );
 export const updateFreelancerSettingsIdentityError = createAction(
   '[Freelancer] Update Freelancer Settings Identity Error',
+  props<{ error: any }>(),
 );

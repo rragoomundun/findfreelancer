@@ -56,8 +56,12 @@ export class FreelancerEffects {
                 lastName,
               }),
             ),
-            catchError(() =>
-              of(FreelancerActions.updateFreelancerSettingsIdentityError()),
+            catchError((error) =>
+              of(
+                FreelancerActions.updateFreelancerSettingsIdentityError(
+                  error.error,
+                ),
+              ),
             ),
           ),
       ),

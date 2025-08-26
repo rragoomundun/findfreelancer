@@ -19,6 +19,7 @@ import { AppState } from '../../../../shared/store/app.state';
 
 import {
   selectFreelancer,
+  selectUpdateFreelancerSettingsIdentityError,
   selectOnUpdateFreelancerSettingsIdentity,
 } from '../../../../shared/store/freelancer/freelancer.selectors';
 import * as FreelancerActions from '../../../../shared/store/freelancer/freelancer.actions';
@@ -38,6 +39,7 @@ export class SettingsIdentity {
   private store = inject(Store<AppState>);
 
   freelancer: Observable<Freelancer | null | undefined>;
+  updateFreelancerSettingsIdentityError: Observable<any>;
   onUpdateFreelancerSettingsIdentity: Observable<string>;
   formGroup = signal(
     new FormGroup({
@@ -46,17 +48,19 @@ export class SettingsIdentity {
       lastName: new FormControl('', [Validators.required]),
     }),
   );
-  formErrors = signal({
-    email: '',
-    firstName: '',
-    lastName: '',
-  });
 
   constructor() {
     this.freelancer = this.store.select(selectFreelancer);
+    this.updateFreelancerSettingsIdentityError = this.store.select(
+      selectUpdateFreelancerSettingsIdentityError,
+    );
     this.onUpdateFreelancerSettingsIdentity = this.store.select(
       selectOnUpdateFreelancerSettingsIdentity,
     );
+
+    this.updateFreelancerSettingsIdentityError.subscribe((error) => {
+      console.log(error);
+    });
 
     this.freelancer
       .pipe(take(1))

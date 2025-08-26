@@ -5,7 +5,7 @@
       [label]="'GENERAL.EMAIL' | translate"
       [type]="'email'"
       [control]="'email'"
-      [error]="formErrors().email"
+      [error]="(updateFreelancerSettingsIdentityError | async).email"
     ></app-input>
   </div>
 
@@ -15,7 +15,6 @@
       [label]="'GENERAL.FIRST_NAME' | translate"
       [type]="'text'"
       [control]="'firstName'"
-      [error]="formErrors().firstName"
     ></app-input>
   </div>
 
@@ -25,7 +24,6 @@
       [label]="'GENERAL.LAST_NAME' | translate"
       [type]="'text'"
       [control]="'lastName'"
-      [error]="formErrors().firstName"
     ></app-input>
   </div>
 

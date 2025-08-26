@@ -14,6 +14,10 @@ export const selectOnGetFreelancer = createSelector(
   selectFreelancerState,
   (state: FreelancerState) => state.onGetFreelancer,
 );
+export const selectUpdateFreelancerSettingsIdentityError = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.updateFreelancerSettingsIdentityError,
+);
 export const selectOnUpdateFreelancerSettingsIdentity = createSelector(
   selectFreelancerState,
   (state: FreelancerState) => state.onUpdateFreelancerSettingsIdentity,
