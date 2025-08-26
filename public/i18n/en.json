@@ -79,5 +79,23 @@
   "HOME_PAGE": {
     "TITLE": "Find the best freelancers",
     "NEW_FREELANCERS": "New Freelancers"
+  },
+  "SETTINGS_PAGE": {
+    "TITLE": "Settings",
+    "TITLE_IDENTITY": "Identity Settings",
+    "TITLE_SECURITY": "Security Settings",
+    "TITLE_DELETE_ACCOUNT": "Delete Account",
+    "TABS": {
+      "IDENTITY": {
+        "TITLE": "Identity",
+        "INFORMATIONS_UPDATED": "Informations updated."
+      },
+      "SECURITY": {
+        "TITLE": "Security"
+      },
+      "DELETE_ACCOUNT": {
+        "TITLE": "Delete Account"
+      }
+    }
   }
 }

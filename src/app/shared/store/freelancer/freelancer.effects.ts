@@ -41,4 +41,30 @@ export class FreelancerEffects {
       ),
     ),
   );
+
+  updateFreelancerSettingsIdentity = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.updateFreelancerSettingsIdentity),
+      exhaustMap(({ email, firstName, lastName }) =>
+        this.freelancerService
+          .updateIdentity({ email, firstName, lastName })
+          .pipe(
+            map(() =>
+              FreelancerActions.updateFreelancerSettingsIdentitySuccess({
+                email,
+                firstName,
+                lastName,
+              }),
+            ),
+            catchError((error) =>
+              of(
+                FreelancerActions.updateFreelancerSettingsIdentityError(
+                  error.error,
+                ),
+              ),
+            ),
+          ),
+      ),
+    ),
+  );
 }

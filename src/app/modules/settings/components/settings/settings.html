@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>{{ "SETTINGS_PAGE.TITLE" | translate }}</h1>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-12 col-sm-3 mb-3">
+      <div class="nav flex-column nav-pills me-3">
+        <a
+          routerLink="/settings/identity"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "SETTINGS_PAGE.TABS.IDENTITY.TITLE" | translate }}
+        </a>
+        <a
+          routerLink="/settings/security"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "SETTINGS_PAGE.TABS.SECURITY.TITLE" | translate }}
+        </a>
+        <a
+          routerLink="/settings/delete-account"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "SETTINGS_PAGE.TABS.DELETE_ACCOUNT.TITLE" | translate }}
+        </a>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm">
+      <div class="tab-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
