@@ -7,6 +7,7 @@ import * as FreelancerActions from './freelancer.actions';
 const initialState: FreelancerState = {
   freelancer: undefined,
   onGetFreelancer: 'false',
+  onUpdateFreelancerSettingsIdentity: 'false',
 };
 
 export const freelancerReducer = createReducer(
@@ -29,5 +30,23 @@ export const freelancerReducer = createReducer(
     ...state,
     freelancer: null,
     onGetFreelancer: 'false',
+  })),
+  on(FreelancerActions.updateFreelancerSettingsIdentity, (state) => ({
+    ...state,
+    onUpdateFreelancerSettingsIdentity: 'true',
+  })),
+  on(
+    FreelancerActions.updateFreelancerSettingsIdentitySuccess,
+    (state, { email, firstName, lastName }) => ({
+      ...state,
+      freelancer: state.freelancer
+        ? { ...state.freelancer, email, firstName, lastName }
+        : null,
+      onUpdateFreelancerSettingsIdentity: 'success',
+    }),
+  ),
+  on(FreelancerActions.updateFreelancerSettingsIdentityError, (state) => ({
+    ...state,
+    onUpdateFreelancerSettingsIdentity: 'error',
   })),
 );

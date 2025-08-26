@@ -93,6 +93,17 @@
 
               <ul class="dropdown-menu">
                 <li>
+                  <a routerLink="/settings" class="dropdown-item">
+                    <span class="fa-solid fa-gears"></span>
+
+                    &nbsp;
+
+                    <span>
+                      {{ "SETTINGS_PAGE.TITLE" | translate }}
+                    </span>
+                  </a>
+                </li>
+                <li>
                   <a
                     (click)="onLogoutClick()"
                     href="javascript:void(0)"

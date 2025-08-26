@@ -1,0 +1,52 @@
+<form [formGroup]="formGroup()" (submit)="onSubmit()">
+  <div class="mb-3">
+    <app-input
+      [id]="'this-email'"
+      [label]="'GENERAL.EMAIL' | translate"
+      [type]="'email'"
+      [control]="'email'"
+      [error]="formErrors().email"
+    ></app-input>
+  </div>
+
+  <div class="mb-3">
+    <app-input
+      [id]="'this-email'"
+      [label]="'GENERAL.FIRST_NAME' | translate"
+      [type]="'text'"
+      [control]="'firstName'"
+      [error]="formErrors().firstName"
+    ></app-input>
+  </div>
+
+  <div class="mb-3">
+    <app-input
+      [id]="'this-email'"
+      [label]="'GENERAL.LAST_NAME' | translate"
+      [type]="'text'"
+      [control]="'lastName'"
+      [error]="formErrors().firstName"
+    ></app-input>
+  </div>
+
+  <div class="text-center">
+    @if ((onUpdateFreelancerSettingsIdentity | async) === "success") {
+      <small class="text-success">
+        {{ "SETTINGS_PAGE.TABS.IDENTITY.INFORMATIONS_UPDATED" | translate }}
+      </small>
+
+      <br /><br />
+    }
+
+    @if ((onUpdateFreelancerSettingsIdentity | async) === "true") {
+      <button [disabled]="true" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+        {{ "GENERAL.MODIFYING" | translate }}
+      </button>
+    } @else {
+      <button [disabled]="formGroup().invalid" class="btn btn-primary">
+        {{ "GENERAL.MODIFY" | translate }}
+      </button>
+    }
+  </div>
+</form>

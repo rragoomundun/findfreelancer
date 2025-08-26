@@ -17,4 +17,14 @@ export class Freelancer {
       withCredentials: true,
     });
   }
+
+  updateIdentity(params: {
+    email: string;
+    firstName: string;
+    lastName: string;
+  }): Observable<null> {
+    return this.http.put<null>(`${this.API_PREFIX}/settings/identity`, params, {
+      withCredentials: true,
+    });
+  }
 }

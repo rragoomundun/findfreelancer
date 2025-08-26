@@ -115,3 +115,20 @@ body {
     }
   }
 }
+
+.nav-pills {
+  .nav-link {
+    color: var(--app-color-primary);
+    transition: var(--app-transition-time);
+  }
+
+  .nav-link:hover {
+    color: var(--app-color-white);
+    background-color: var(--app-color-primary);
+    transition: var(--app-transition-time);
+  }
+
+  .nav-link.active {
+    background-color: var(--app-color-primary);
+  }
+}
