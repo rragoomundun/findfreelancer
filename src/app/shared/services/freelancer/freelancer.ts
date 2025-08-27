@@ -36,4 +36,10 @@ export class Freelancer {
       withCredentials: true,
     });
   }
+
+  deleteAccount(): Observable<null> {
+    return this.http.delete<null>(`${this.API_PREFIX}`, {
+      withCredentials: true,
+    });
+  }
 }

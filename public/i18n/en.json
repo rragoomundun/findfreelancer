@@ -16,6 +16,8 @@
     "SUBMITTING": "Submitting",
     "MODIFY": "Modify",
     "MODIFYING": "Modyfying...",
+    "DELETE": "Delete",
+    "DELETING": "Deleting",
     "HOUR": "h",
     "ERRORS": {
       "NO_ACCOUNT_FOR_EMAIL": "There are no account associated to this e-mail.",
@@ -95,7 +97,9 @@
         "PASSWORD_UPDATED": "Password updated."
       },
       "DELETE_ACCOUNT": {
-        "TITLE": "Delete Account"
+        "TITLE": "Delete Account",
+        "WARNING": "WARNING: you are about to delete your account on FindFreelancer. After this operation your account and all its data will be deleted. It is not possible to recover from this operation. If you are sure that you want to proceed, click on the Delete button.",
+        "ACCOUNT_DELETED": "Your account have been delete. You are going to be redirected..."
       }
     }
   }
