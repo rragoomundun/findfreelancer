@@ -1,1 +1,20 @@
-<p>settings-delete-account works!</p>
+<p class="text-danger fw-bold">
+  {{ "SETTINGS_PAGE.TABS.DELETE_ACCOUNT.WARNING" | translate }}
+</p>
+
+<div class="text-center">
+  @if (onDelete() === "false") {
+    <button (click)="onDeleteClick()" class="btn btn-danger">
+      {{ "GENERAL.DELETE" | translate }}
+    </button>
+  } @else if (onDelete() === "true") {
+    <button [disabled]="true" class="btn btn-danger">
+      <span class="fa-solid fa-spinner fa-spin"></span>
+      <span>{{ "GENERAL.DELETING" | translate }}</span>
+    </button>
+  } @else {
+    <small class="text-success">
+      {{ "SETTINGS_PAGE.TABS.DELETE_ACCOUNT.ACCOUNT_DELETED" | translate }}
+    </small>
+  }
+</div>

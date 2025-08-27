@@ -73,7 +73,7 @@
               >
                 @if ((freelancer$ | async)?.image) {
                   <img
-                    src="(freelancer$ | async)?.image"
+                    [src]="(freelancer$ | async)?.image"
                     [alt]="
                       (freelancer$ | async)?.firstName +
                       ' ' +
