@@ -21,6 +21,7 @@
     "HOUR": "h",
     "COUNTRY": "Country",
     "CANCEL": "Cancel",
+    "TITLE": "Title",
     "ERRORS": {
       "NO_ACCOUNT_FOR_EMAIL": "There are no account associated to this e-mail.",
       "NOT_EMAIL": "This e-mail address is invalid.",
@@ -134,7 +135,9 @@
         }
       },
       "PRESENTATION": {
-        "TITLE": "Presentation"
+        "TITLE": "Presentation",
+        "PRESENTATION_TEXT": "Presentation Text",
+        "INFORMATIONS_UPDATED": "Presentation informations updated."
       },
       "SKILLS": {
         "TITLE": "Skills"

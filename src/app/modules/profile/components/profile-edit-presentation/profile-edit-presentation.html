@@ -1,1 +1,48 @@
-<p>profile-edit-presentation works!</p>
+<form [formGroup]="formGroup()" (submit)="onSubmit()">
+  <div class="mb-3">
+    <app-input
+      [id]="'this-title'"
+      [label]="'GENERAL.TITLE' | translate"
+      [type]="'text'"
+      [control]="'title'"
+    >
+    </app-input>
+  </div>
+
+  <div class="mb-3">
+    <app-text-area
+      [id]="'this-presentation-text'"
+      [label]="
+        'EDIT_PROFILE_PAGE.TABS.PRESENTATION.PRESENTATION_TEXT' | translate
+      "
+      [control]="'presentationText'"
+      [rows]="10"
+    ></app-text-area>
+  </div>
+
+  <div class="text-center">
+    @if (onUpdate() === "success") {
+      <small class="text-success">
+        {{
+          "EDIT_PROFILE_PAGE.TABS.PRESENTATION.INFORMATIONS_UPDATED" | translate
+        }}
+      </small>
+
+      <br /><br />
+    }
+
+    @if (onUpdate() === "true") {
+      <button [disabled]="true" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+
+        &nbsp;
+
+        <span>{{ "GENERAL.MODIFYING" | translate }}</span>
+      </button>
+    } @else {
+      <button class="btn btn-primary">
+        <span>{{ "GENERAL.MODIFY" | translate }}</span>
+      </button>
+    }
+  </div>
+</form>

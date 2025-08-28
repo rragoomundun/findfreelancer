@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Freelancer as FreelancerModel } from '../../models/Freelancer';
 import { FreelancerGeneralInformation } from '../../models/FreelancerGeneralInformation';
+import { FreelancerPresentationInformation } from '../../models/FreelancerPresentationInformation';
 
 @Injectable({
   providedIn: 'root',
@@ -59,5 +60,22 @@ export class Freelancer {
     return this.http.put<null>(`${this.API_PREFIX}/profile/general`, params, {
       withCredentials: true,
     });
+  }
+
+  getPresentationInformation(): Observable<FreelancerPresentationInformation> {
+    return this.http.get<FreelancerPresentationInformation>(
+      `${this.API_PREFIX}/presentation`,
+      { withCredentials: true },
+    );
+  }
+
+  updatePresentationInformation(
+    params: FreelancerPresentationInformation,
+  ): Observable<null> {
+    return this.http.put<null>(
+      `${this.API_PREFIX}/profile/presentation`,
+      params,
+      { withCredentials: true },
+    );
   }
 }
