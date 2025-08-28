@@ -1,0 +1,14 @@
+img {
+  width: var(--app-profile-picture-full-size);
+  height: var(--app-profile-picture-full-size);
+}
+
+.fa-regular.fa-times-circle {
+  position: relative;
+  top: -54px;
+  left: -20px;
+}
+
+.fa-regular.fa-times-circle:hover {
+  cursor: pointer;
+}

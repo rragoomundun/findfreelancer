@@ -1,0 +1,114 @@
+<div class="text-center">
+  @let freelancer = freelancer$ | async;
+
+  @if (image()) {
+    <img
+      [src]="image()"
+      alt="{{ freelancer?.firstName }} {{ freelancer?.lastName }} image"
+      class="rounded-circle"
+    />
+    <span
+      (click)="onDeleteImageClick()"
+      class="fa-regular fa-times-circle text-danger"
+    ></span>
+
+    @if (isFileSizeInvalid) {
+      <br />
+
+      <small class="text-danger">
+        {{ "EDIT_PROFILE_PAGE.TABS.GENERAL.ERRORS.IMAGE_SIZE" | translate }}
+      </small>
+    }
+  } @else {
+    <span class="fa-regular fa-circle-user fa-8x"></span>
+  }
+
+  <br /><br />
+
+  <label class="btn btn-primary" for="this-image">
+    {{ "EDIT_PROFILE_PAGE.TABS.GENERAL.CHANGE_PICTURE" | translate }}
+  </label>
+  <input
+    (change)="onFileSelected($event)"
+    id="this-image"
+    type="file"
+    accept="image/*"
+    autocomplete="off"
+    hidden
+  />
+</div>
+
+<br /><br />
+
+<form [formGroup]="formGroup()" (submit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col-12 col-sm-6">
+      <label for="this-country" class="form-label">
+        {{ "GENERAL.COUNTRY" | translate }}
+      </label>
+      <select
+        formControlName="countryCode"
+        id="this-country"
+        class="form-select"
+      >
+        <option value="">
+          {{ "EDIT_PROFILE_PAGE.TABS.GENERAL.SELECT_COUNTRY" | translate }}
+        </option>
+        @for (country of countriesService.countries; track country) {
+          <option [value]="country.code">{{ country.name }}</option>
+        }
+      </select>
+    </div>
+    <div class="col-12 col-sm-6">
+      <app-input
+        [id]="'this-town'"
+        [label]="'EDIT_PROFILE_PAGE.TABS.GENERAL.TOWN' | translate"
+        [type]="'text'"
+        [control]="'town'"
+      >
+      </app-input>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <app-input
+      [id]="'this-hourly-rate'"
+      [label]="'EDIT_PROFILE_PAGE.TABS.GENERAL.HOURLY_RATE' | translate"
+      [type]="'number'"
+      [min]="5"
+      [max]="100"
+      [control]="'hourlyRate'"
+      [error]="formErrors().hourlyRate"
+    ></app-input>
+  </div>
+
+  <div class="text-center">
+    @if (onUpdate() === "success") {
+      <small class="text-success">
+        {{ "EDIT_PROFILE_PAGE.TABS.GENERAL.INFORMATIONS_UPDATED" | translate }}
+      </small>
+
+      <br />
+      <br />
+    }
+
+    @if (onUpdate() === "true") {
+      <button [disabled]="true" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+
+        &nbsp;
+
+        <span>{{ "GENERAL.MODIFYING" | translate }}</span>
+      </button>
+    } @else {
+      <button [disabled]="isFileSizeInvalid" class="btn btn-primary">
+        {{ "GENERAL.MODIFY" | translate }}
+      </button>
+    }
+  </div>
+</form>
+
+<app-image-cropper
+  #imageCropper
+  (newImage)="onNewImage($event)"
+></app-image-cropper>

@@ -1,0 +1,27 @@
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">
+      {{ "COMPONENTS.IMAGE_CROPPER.TITLE" | translate }}
+    </h4>
+    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <image-cropper
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [resizeToWidth]="256"
+      [resizeToHeight]="256"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+    ></image-cropper>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="onCropClick()">
+      {{ "COMPONENTS.IMAGE_CROPPER.CROP" | translate }}
+    </button>
+
+    <button type="button" class="btn btn-secondary" (click)="modal.close()">
+      {{ "GENERAL.CANCEL" | translate }}
+    </button>
+  </div>
+</ng-template>

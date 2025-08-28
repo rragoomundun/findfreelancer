@@ -19,6 +19,8 @@
     "DELETE": "Delete",
     "DELETING": "Deleting",
     "HOUR": "h",
+    "COUNTRY": "Country",
+    "CANCEL": "Cancel",
     "ERRORS": {
       "NO_ACCOUNT_FOR_EMAIL": "There are no account associated to this e-mail.",
       "NOT_EMAIL": "This e-mail address is invalid.",
@@ -34,6 +36,12 @@
   "FOOTER": {
     "PRIVACY": "Privacy Policy",
     "TOS": "Terms of Use"
+  },
+  "COMPONENTS": {
+    "IMAGE_CROPPER": {
+      "TITLE": "Crop your image",
+      "CROP": "Crop"
+    }
   },
   "REGISTER_PAGE": {
     "TITLE": "Register on FindFreelancer",
@@ -100,6 +108,48 @@
         "TITLE": "Delete Account",
         "WARNING": "WARNING: you are about to delete your account on FindFreelancer. After this operation your account and all its data will be deleted. It is not possible to recover from this operation. If you are sure that you want to proceed, click on the Delete button.",
         "ACCOUNT_DELETED": "Your account have been delete. You are going to be redirected..."
+      }
+    }
+  },
+  "EDIT_PROFILE_PAGE": {
+    "TITLE": "Edit Profile",
+    "TITLE_GENERAL": "General Profile Information",
+    "TITLE_PRESENTATION": "Presentation Profile Information",
+    "TITLE_SKILLS": "Skills Profile Information",
+    "TITLE_EXPERIENCES": "Experiences Profile Information",
+    "TITLE_EDUCATION": "Education Profile Information",
+    "TITLE_LANGUAGES": "Languages Profile Information",
+    "TITLE_CONTACT": "Contact Profile Information",
+    "TABS": {
+      "GENERAL": {
+        "TITLE": "General",
+        "CHANGE_PICTURE": "Change Picture",
+        "DELETE_PICTURE": "Delete Picture",
+        "SELECT_COUNTRY": "Select a country",
+        "TOWN": "Town",
+        "HOURLY_RATE": "Hourly Rate",
+        "INFORMATIONS_UPDATED": "General informations updated.",
+        "ERRORS": {
+          "IMAGE_SIZE": "Image is too big. Please select an image no bigger than 5MB."
+        }
+      },
+      "PRESENTATION": {
+        "TITLE": "Presentation"
+      },
+      "SKILLS": {
+        "TITLE": "Skills"
+      },
+      "EXPERIENCES": {
+        "TITLE": "Experiences"
+      },
+      "EDUCATION": {
+        "TITLE": "Education"
+      },
+      "LANGUAGES": {
+        "TITLE": "Languages"
+      },
+      "CONTACT": {
+        "TITLE": "Contact"
       }
     }
   }

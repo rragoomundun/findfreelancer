@@ -1,0 +1,67 @@
+<div class="container">
+  <h1>{{ "EDIT_PROFILE_PAGE.TITLE" | translate }}</h1>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-12 col-sm-3 mb-3">
+      <div class="nav flex-column nav-pills me-3">
+        <a
+          routerLink="/profile/general"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "EDIT_PROFILE_PAGE.TABS.GENERAL.TITLE" | translate }}
+        </a>
+        <a
+          routerLink="/profile/presentation"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "EDIT_PROFILE_PAGE.TABS.PRESENTATION.TITLE" | translate }}
+        </a>
+        <a
+          routerLink="/profile/skills"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "EDIT_PROFILE_PAGE.TABS.SKILLS.TITLE" | translate }}
+        </a>
+        <a
+          routerLink="/profile/experiences"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "EDIT_PROFILE_PAGE.TABS.EXPERIENCES.TITLE" | translate }}
+        </a>
+        <a
+          routerLink="/profile/education"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "EDIT_PROFILE_PAGE.TABS.EDUCATION.TITLE" | translate }}
+        </a>
+        <a
+          routerLink="/profile/languages"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "EDIT_PROFILE_PAGE.TABS.LANGUAGES.TITLE" | translate }}
+        </a>
+        <a
+          routerLink="/profile/contact"
+          routerLinkActive="active"
+          class="nav-link mb-1"
+        >
+          {{ "EDIT_PROFILE_PAGE.TABS.CONTACT.TITLE" | translate }}
+        </a>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm">
+      <div class="tab-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

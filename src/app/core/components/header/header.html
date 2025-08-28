@@ -93,7 +93,27 @@
 
               <ul class="dropdown-menu">
                 <li>
-                  <a routerLink="/settings" class="dropdown-item">
+                  <a
+                    (click)="hideHamburgerMenu()"
+                    routerLink="/profile"
+                    class="dropdown-item"
+                  >
+                    <span class="fa-solid fa-user-pen"></span>
+
+                    &nbsp;
+
+                    <span>
+                      {{ "EDIT_PROFILE_PAGE.TITLE" | translate }}
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    (click)="hideHamburgerMenu()"
+                    routerLink="/settings"
+                    class="dropdown-item"
+                  >
                     <span class="fa-solid fa-gears"></span>
 
                     &nbsp;

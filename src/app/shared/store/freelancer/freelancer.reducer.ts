@@ -60,4 +60,14 @@ export const freelancerReducer = createReducer(
       onUpdateFreelancerSettingsIdentity: 'error',
     }),
   ),
+  on(FreelancerActions.updateFreelancerImage, (state, { image }) => ({
+    ...state,
+    freelancer: {
+      _id: <string>state.freelancer?._id,
+      email: <string>state.freelancer?.email,
+      firstName: <string>state.freelancer?.firstName,
+      lastName: <string>state.freelancer?.lastName,
+      image: image,
+    },
+  })),
 );

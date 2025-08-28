@@ -15,6 +15,8 @@
   --app-color-primary-hover: #0d6791;
 
   --app-transition-time: 0.2s;
+
+  --app-profile-picture-full-size: 128px;
 }
 
 /* Custom CSS */
@@ -42,6 +44,11 @@ body {
 
   .card-body {
     padding-top: 0;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin-top: 0 !important;
+    box-shadow: unset !important;
   }
 }
 
@@ -107,6 +114,11 @@ body {
       height: 0.75rem;
       border-radius: 100%;
     }
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    z-index: 0;
   }
 
   .picsum-img-wrapper {

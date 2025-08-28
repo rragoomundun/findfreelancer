@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Freelancer as FreelancerModel } from '../../models/Freelancer';
+import { FreelancerGeneralInformation } from '../../models/FreelancerGeneralInformation';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,23 @@ export class Freelancer {
 
   deleteAccount(): Observable<null> {
     return this.http.delete<null>(`${this.API_PREFIX}`, {
+      withCredentials: true,
+    });
+  }
+
+  getGeneralInformation(): Observable<FreelancerGeneralInformation> {
+    return this.http.get<FreelancerGeneralInformation>(
+      `${this.API_PREFIX}/general`,
+      {
+        withCredentials: true,
+      },
+    );
+  }
+
+  updateGeneralInformation(
+    params: FreelancerGeneralInformation,
+  ): Observable<null> {
+    return this.http.put<null>(`${this.API_PREFIX}/profile/general`, params, {
       withCredentials: true,
     });
   }

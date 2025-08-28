@@ -25,6 +25,8 @@ export class Input {
   placeholder = input<string>();
   prependIcon = input<string>();
   type = input<string>();
+  min = input<number>();
+  max = input<number>();
   control = input<string>();
   error = input<string>();
 }
