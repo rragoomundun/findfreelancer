@@ -45,6 +45,11 @@ body {
   .card-body {
     padding-top: 0;
   }
+
+  @media screen and (max-width: 500px) {
+    margin-top: 0 !important;
+    box-shadow: unset !important;
+  }
 }
 
 .app-logo {
@@ -109,6 +114,11 @@ body {
       height: 0.75rem;
       border-radius: 100%;
     }
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    z-index: 0;
   }
 
   .picsum-img-wrapper {
