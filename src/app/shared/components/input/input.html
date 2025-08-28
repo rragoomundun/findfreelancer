@@ -1,32 +1,34 @@
 @if (label()) {
-<label [for]="id()" class="form-label">
-  @if (labelIcon()) {
-  <span [class]="labelIcon()"></span>
-  }
+  <label [for]="id()" class="form-label">
+    @if (labelIcon()) {
+      <span [class]="labelIcon()"></span>
+    }
 
-  {{ label() }}
-</label>
+    {{ label() }}
+  </label>
 
-<div [class.has-validation]="error()" class="input-group">
-  @if (prependIcon()) {
-  <span class="input-group-text">
-    <span [class]="prependIcon()"></span>
-  </span>
-  }
+  <div [class.has-validation]="error()" class="input-group">
+    @if (prependIcon()) {
+      <span class="input-group-text">
+        <span [class]="prependIcon()"></span>
+      </span>
+    }
 
-  <input
-    [class.is-invalid]="error()"
-    [id]="id()"
-    [type]="type()"
-    [placeholder]="placeholder() ?? ''"
-    [formControlName]="control() ?? ''"
-    class="form-control"
-  />
+    <input
+      [class.is-invalid]="error()"
+      [id]="id()"
+      [type]="type()"
+      [placeholder]="placeholder() ?? ''"
+      [formControlName]="control() ?? ''"
+      [min]="min()"
+      [max]="max()"
+      class="form-control"
+    />
 
-  @if (error()) {
-  <div class="invalid-feedback">
-    {{ error() ? ("GENERAL.ERRORS." + error() | translate) : "" }}
+    @if (error()) {
+      <div class="invalid-feedback">
+        {{ error() ? ("GENERAL.ERRORS." + error() | translate) : "" }}
+      </div>
+    }
   </div>
-  }
-</div>
 }

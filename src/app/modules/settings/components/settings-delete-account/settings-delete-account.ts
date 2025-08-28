@@ -8,7 +8,7 @@ import { selectFreelancer } from '../../../../shared/store/freelancer/freelancer
 import * as FreelancerActions from '../../../../shared/store/freelancer/freelancer.actions';
 
 import { Freelancer as FreelancerService } from '../../../../shared/services/freelancer/freelancer';
-import { File as FileService } from '../../../../shared/services/file/file';
+import { FileService } from '../../../../shared/services/file/file';
 
 import { Freelancer } from '../../../../shared/models/Freelancer';
 

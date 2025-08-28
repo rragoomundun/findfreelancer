@@ -24,7 +24,8 @@
         }
 
         img {
-          padding: 0 3rem;
+          width: var(--app-profile-picture-full-size);
+          height: var(--app-profile-picture-full-size);
         }
       }
 
