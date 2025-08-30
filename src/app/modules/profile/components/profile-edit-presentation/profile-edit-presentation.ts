@@ -1,4 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -19,6 +24,7 @@ import { FreelancerPresentationInformation } from '../../../../shared/models/Fre
   ],
   templateUrl: './profile-edit-presentation.html',
   styleUrl: './profile-edit-presentation.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileEditPresentation {
   private freelancerService = inject(FreelancerService);

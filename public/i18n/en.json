@@ -140,7 +140,8 @@
         "INFORMATIONS_UPDATED": "Presentation informations updated."
       },
       "SKILLS": {
-        "TITLE": "Skills"
+        "TITLE": "Skills",
+        "INFORMATIONS_UPDATED": "Skills updated."
       },
       "EXPERIENCES": {
         "TITLE": "Experiences"
