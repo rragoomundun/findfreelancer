@@ -1,1 +1,59 @@
-<p>profile-edit-skills works!</p>
+<form [formGroup]="formGroup()" (submit)="onSubmit()">
+  <div
+    (cdkDropListDropped)="drop($event)"
+    cdkDropList
+    cdkDropListOrientation="mixed"
+    id="this-skills-list"
+  >
+    @for (
+      control of formGroup().controls.skills.controls;
+      track control;
+      let i = $index
+    ) {
+      <div class="this-skill" cdkDrag>
+        <input
+          [formControl]="control"
+          [size]="
+            control.value!.length
+              ? control.value!.length < 10
+                ? control.value!.length
+                : 10
+              : 5
+          "
+          type="text"
+        />
+        <span (click)="onDeleteSkillClick(i)" class="fas fa-times"></span>
+      </div>
+    }
+
+    <button
+      (click)="onAddNewSkillClick()"
+      id="this-add-skill-button"
+      type="button"
+    >
+      <span class="fa-solid fa-plus"></span>
+    </button>
+  </div>
+
+  <br />
+
+  <div class="text-center">
+    @if (onUpdate() === "success") {
+      <small class="text-success">
+        {{ "EDIT_PROFILE_PAGE.TABS.SKILLS.INFORMATIONS_UPDATED" | translate }}
+      </small>
+
+      <br /><br />
+    }
+
+    @if (onUpdate() === "true") {
+      <button [disabled]="true" class="btn btn-primary">
+        {{ "GENERAL.MODIFYING" | translate }}
+      </button>
+    } @else {
+      <button class="btn btn-primary">
+        {{ "GENERAL.MODIFY" | translate }}
+      </button>
+    }
+  </div>
+</form>

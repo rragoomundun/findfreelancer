@@ -78,4 +78,16 @@ export class Freelancer {
       { withCredentials: true },
     );
   }
+
+  getSkills(): Observable<{ skills: string[] }> {
+    return this.http.get<{ skills: string[] }>(`${this.API_PREFIX}/skills`, {
+      withCredentials: true,
+    });
+  }
+
+  updateSKills(params: { skills: string[] }): Observable<null> {
+    return this.http.put<null>(`${this.API_PREFIX}/profile/skills`, params, {
+      withCredentials: true,
+    });
+  }
 }
