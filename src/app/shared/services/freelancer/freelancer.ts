@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Freelancer as FreelancerModel } from '../../models/Freelancer';
 import { FreelancerGeneralInformation } from '../../models/FreelancerGeneralInformation';
 import { FreelancerPresentationInformation } from '../../models/FreelancerPresentationInformation';
+import { FreelancerExperience } from '../../models/FreelancerExperience';
 
 @Injectable({
   providedIn: 'root',
@@ -89,5 +90,37 @@ export class Freelancer {
     return this.http.put<null>(`${this.API_PREFIX}/profile/skills`, params, {
       withCredentials: true,
     });
+  }
+
+  getExperiences(): Observable<FreelancerExperience[]> {
+    return this.http.get<FreelancerExperience[]>(
+      `${this.API_PREFIX}/experiences`,
+      { withCredentials: true },
+    );
+  }
+
+  createExperience(
+    experience: FreelancerExperience,
+  ): Observable<FreelancerExperience> {
+    return this.http.post<FreelancerExperience>(
+      `${this.API_PREFIX}/profile/experience`,
+      experience,
+      { withCredentials: true },
+    );
+  }
+
+  updateExperience(experience: FreelancerExperience): Observable<null> {
+    return this.http.put<null>(
+      `${this.API_PREFIX}/profile/experience/${experience._id}`,
+      experience,
+      { withCredentials: true },
+    );
+  }
+
+  deleteExperience(id: string): Observable<null> {
+    return this.http.delete<null>(
+      `${this.API_PREFIX}/profile/experience/${id}`,
+      { withCredentials: true },
+    );
   }
 }

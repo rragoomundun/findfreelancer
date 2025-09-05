@@ -8,11 +8,7 @@ import {
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import {
-  ImageCropperComponent,
-  ImageCroppedEvent,
-  LoadedImage,
-} from 'ngx-image-cropper';
+import { ImageCropperComponent, ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-image-cropper',
@@ -45,8 +41,6 @@ export class ImageCropper {
       <string>event.objectUrl,
     );
     this.blob = <Blob>event.blob;
-
-    console.log(this.croppedImage);
   }
 
   onCropClick(): void {

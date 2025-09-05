@@ -1,0 +1,23 @@
+@if (label()) {
+  <label [for]="id()" class="form-label">
+    {{ label() }}
+  </label>
+}
+
+<div>
+  <input
+    #datePicker="ngbDatepicker"
+    ngbDatepicker
+    (click)="datePicker.open()"
+    (dateSelect)="onDateSelect($event)"
+    [id]="id()"
+    [minDate]="minDate()!"
+    [formControlName]="control() ?? ''"
+    placeholder="YYYY-MM-DD"
+    type="text"
+    class="form-control"
+  />
+  <button (click)="datePicker.open()" class="btn btn-primary">
+    <span class="fa-solid fa-calendar-days"></span>
+  </button>
+</div>

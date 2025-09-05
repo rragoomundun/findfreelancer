@@ -1,0 +1,164 @@
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    @if (experienceId()) {
+      <h4 class="modal-title">
+        {{
+          "EDIT_PROFILE_PAGE.TABS.EXPERIENCES.COMPONENTS.PROFILE_EDIT_EXPERIENCES_EDIT.TITLE"
+            | translate
+        }}
+      </h4>
+    } @else {
+      <h4 class="modal-title">
+        {{ "EDIT_PROFILE_PAGE.TABS.EXPERIENCES.ADD_EXPERIENCE" | translate }}
+      </h4>
+    }
+    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    @if (formGroup()) {
+      <form [formGroup]="formGroup()">
+        <div class="mb-3">
+          <label for="this-experience-title" class="form-label">
+            {{ "GENERAL.TITLE" | translate }}
+          </label>
+          <input
+            formControlName="title"
+            id="this-experience-title"
+            type="text"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-sm-4 mb-3">
+            <label for="this-experience-organization" class="form-label">
+              {{ "GENERAL.ORGANIZATION" | translate }}
+            </label>
+            <input
+              formControlName="organization"
+              id="this-experience-organization"
+              type="text"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label for="this-experience-country" class="form-label">
+              {{ "GENERAL.COUNTRY" | translate }}
+            </label>
+            <select
+              formControlName="countryCode"
+              id="this-experience-country"
+              class="form-select"
+              required
+            >
+              <option value="">
+                {{ "GENERAL.SELECT_COUNTRY" | translate }}
+              </option>
+
+              @for (country of countriesService.countries; track country) {
+                <option [value]="country.code">{{ country.name }}</option>
+              }
+            </select>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label for="this-experience-town" class="form-label">
+              {{ "GENERAL.TOWN" | translate }}
+            </label>
+            <input
+              formControlName="town"
+              id="this-experience-town"
+              type="text"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            [formGroup]="formGroup().controls.startDate"
+            class="col-12 col-sm-6 mb-3"
+          >
+            <app-date-picker-month-year
+              [label]="'GENERAL.START_DATE' | translate"
+              [minDate]="{ month: 1, year: 1950 }"
+              [monthControlName]="'month'"
+              [yearControlName]="'year'"
+              [monthControl]="formGroup().controls.startDate.controls.month"
+              [yearControl]="formGroup().controls.startDate.controls.year"
+              (dateChanged)="onStartDateChanged($event)"
+            ></app-date-picker-month-year>
+          </div>
+
+          @if (formGroup().controls.workHere.value === false) {
+            <div
+              [formGroup]="formGroup().controls.endDate"
+              class="col-12 col-sm-6 mb-3"
+            >
+              <app-date-picker-month-year
+                [label]="'GENERAL.END_DATE' | translate"
+                [minDate]="minEndDate()"
+                [monthControlName]="'month'"
+                [yearControlName]="'year'"
+                [monthControl]="formGroup().controls.endDate.controls.month"
+                [yearControl]="formGroup().controls.endDate.controls.year"
+              ></app-date-picker-month-year>
+            </div>
+          }
+        </div>
+
+        <div class="mb-3 form-check">
+          <input
+            formControlName="workHere"
+            id="this-work-here"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label for="this-work-here" class="form-check-label">
+            {{
+              "EDIT_PROFILE_PAGE.TABS.EXPERIENCES.COMPONENTS.PROFILE_EDIT_EXPERIENCES_EDIT.WORK_HERE"
+                | translate
+            }}
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <app-text-area
+            [id]="'this-description'"
+            [label]="'GENERAL.DESCRIPTION' | translate"
+            [control]="'description'"
+            [rows]="10"
+          ></app-text-area>
+        </div>
+      </form>
+    }
+  </div>
+  <div class="modal-footer justify-content-center">
+    @if (
+      (onUpdateExperience$ | async) !== "true" ||
+      (onCreateExperience$ | async) !== "true"
+    ) {
+      <button
+        [disabled]="
+          formGroup().invalid ||
+          (formGroup().controls.workHere.value === false &&
+            (formGroup().controls.endDate.controls.month.value === '' ||
+              formGroup().controls.endDate.controls.year.value === ''))
+        "
+        (click)="onSaveClick()"
+        type="button"
+        class="btn btn-primary"
+      >
+        {{ "GENERAL.SAVE" | translate }}
+      </button>
+    } @else {
+      <button [disabled]="true" type="button" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+        &nbsp;
+        <span>{{ "GENERAL.SAVING" | translate }}</span>
+      </button>
+    }
+  </div>
+</ng-template>

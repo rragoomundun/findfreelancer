@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, exhaustMap, catchError, of, tap } from 'rxjs';
+import { map, exhaustMap, mergeMap, catchError, of, tap } from 'rxjs';
 
 import * as FreelancerActions from './freelancer.actions';
 
@@ -8,6 +8,7 @@ import { Freelancer } from '../../models/Freelancer';
 
 import { Freelancer as FreelancerService } from '../../services/freelancer/freelancer';
 import { Auth as AuthService } from '../../../modules/auth/services/auth/auth';
+import { FreelancerExperience } from '../../models/FreelancerExperience';
 
 @Injectable()
 export class FreelancerEffects {
@@ -64,6 +65,76 @@ export class FreelancerEffects {
               ),
             ),
           ),
+      ),
+    ),
+  );
+
+  getFreelancerExperiences = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.getFreelancerExperiences),
+      exhaustMap(() =>
+        this.freelancerService.getExperiences().pipe(
+          map((experiences: FreelancerExperience[]) =>
+            FreelancerActions.getFreelancerExperiencesSuccess({ experiences }),
+          ),
+          catchError(() => of(FreelancerActions.getFreelancerExperiencesError)),
+        ),
+      ),
+    ),
+  );
+
+  createFreelancerExperience = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.createFreelancerExperience),
+      exhaustMap(({ experience }) =>
+        this.freelancerService.createExperience(experience).pipe(
+          map((createdExperience) =>
+            FreelancerActions.createFreelancerExperienceSuccess({
+              experience: createdExperience,
+            }),
+          ),
+          catchError(() =>
+            of(FreelancerActions.createFreelancerExperienceError),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  updateFreelancerExperience = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.updateFreelancerExperience),
+      exhaustMap(({ experience }) =>
+        this.freelancerService.updateExperience(experience).pipe(
+          map(() =>
+            FreelancerActions.updateFreelancerExperienceSuccess({ experience }),
+          ),
+          catchError(() =>
+            of(FreelancerActions.updateFreelancerExperienceError),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  deleteFreelancerExperience = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.deleteFreelancerExperience),
+      mergeMap(({ experienceId }) =>
+        this.freelancerService.deleteExperience(experienceId).pipe(
+          map(() =>
+            FreelancerActions.deleteFreelancerExperienceSuccess({
+              experienceId,
+            }),
+          ),
+          catchError(() =>
+            of(
+              FreelancerActions.deleteFreelancerExperienceError({
+                experienceId,
+              }),
+            ),
+          ),
+        ),
       ),
     ),
   );

@@ -66,24 +66,22 @@ body {
     var(--app-shadow-color);
 }
 
-.input-group {
-  .form-control {
-    border-radius: var(--bs-border-radius) !important;
-  }
+.form-control {
+  border-radius: var(--bs-border-radius) !important;
+}
 
-  .form-control,
-  .form-select,
-  .form-floating {
-    transition: var(--app-transition-time);
-  }
+.form-control,
+.form-select,
+.form-floating {
+  transition: var(--app-transition-time);
+}
 
-  .form-control:focus,
-  .form-select:focus,
-  .form-floating:focus-within {
-    box-shadow: none;
-    border-color: var(--bs-body-color);
-    transition: var(--app-transition-time);
-  }
+.form-control:focus,
+.form-select:focus,
+.form-floating:focus-within {
+  box-shadow: none;
+  border-color: var(--bs-body-color);
+  transition: var(--app-transition-time);
 }
 
 .btn,
@@ -101,6 +99,15 @@ body {
 .btn-primary:hover {
   border-color: var(--app-color-primary-hover);
   background-color: var(--app-color-primary-hover);
+}
+
+.form-check-input:checked {
+  background-color: var(--app-color-primary);
+  border-color: var(--app-color-primary);
+}
+
+.form-check-input:focus {
+  box-shadow: unset;
 }
 
 .carousel {

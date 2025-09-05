@@ -61,8 +61,8 @@
     padding: 0 1rem;
 
     input {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
       border: none;
     }
 

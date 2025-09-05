@@ -1,1 +1,74 @@
-<p>profile-edit-experiences works!</p>
+@let experiences = experiences$ | async;
+
+@for (experience of experiences; track experience; let i = $index) {
+  @let onDeleteExperience =
+    (onDeleteExperience$ | async)?.[experience._id] ?? "false";
+
+  <div class="this-experience mb-3">
+    <div class="row">
+      <div class="col-6 col-sm-7 col-md-8">
+        <div class="fw-bold">
+          <span>{{ experience.title }}</span>
+          <span> · </span>
+          <span>{{ experience.organization }}</span>
+          <span> · </span>
+          <span>{{ experience.town }}</span>
+          <span>, </span>
+          <span>{{
+            countriesService.getCountryName(experience.countryCode)
+          }}</span>
+
+          <br />
+
+          <span>{{ dateService.getDateMonthYYYY(experience.startDate) }}</span>
+          <span> - </span>
+
+          @if (experience.endDate) {
+            <span>{{ dateService.getDateMonthYYYY(experience.endDate) }}</span>
+          } @else {
+            <span>{{ "GENERAL.NOW" | translate }}</span>
+          }
+        </div>
+      </div>
+      <div class="col-6 col-sm-5 col-md-4 text-end">
+        @if (onDeleteExperience !== "true") {
+          <button
+            (click)="onEditExperienceClick(experience)"
+            class="btn btn-primary me-1"
+          >
+            {{ "GENERAL.EDIT" | translate }}
+          </button>
+        }
+
+        @if (onDeleteExperience !== "true") {
+          <button
+            (click)="onDeleteExperienceClick(experience._id)"
+            class="btn btn-danger"
+          >
+            {{ "GENERAL.DELETE" | translate }}
+          </button>
+        } @else {
+          <button [disabled]="true" class="btn btn-danger">
+            {{ "GENERAL.DELETING" | translate }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <app-show-more [text]="experience.description"></app-show-more>
+  </div>
+
+  @if (experiences!.length > 0) {
+    <hr />
+  }
+}
+
+<div class="text-center">
+  <button (click)="onEditExperienceClick(null)" class="btn btn-primary">
+    {{ "EDIT_PROFILE_PAGE.TABS.EXPERIENCES.ADD_EXPERIENCE" | translate }}
+  </button>
+</div>
+
+<app-profile-edit-experiences-edit
+  #profileEditExperienceEditComponent
+></app-profile-edit-experiences-edit>

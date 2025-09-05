@@ -1,0 +1,38 @@
+@if (label()) {
+  <label class="form-label">
+    {{ label() }}
+  </label>
+
+  <div class="row">
+    <div class="col-6">
+      <select
+        [formControlName]="monthControlName() ?? ''"
+        (change)="onDateChanged()"
+        class="form-select"
+      >
+        <option value="">
+          {{ "COMPONENTS.DATE_PICKER_MONTH_YEAR.SELECT_MONTH" | translate }}
+        </option>
+
+        @for (month of months(); track month) {
+          <option [value]="month.value">{{ month.name }}</option>
+        }
+      </select>
+    </div>
+    <div class="col-6">
+      <select
+        [formControlName]="yearControlName() ?? ''"
+        (change)="setMonths(); onDateChanged()"
+        class="form-select"
+      >
+        <option value="">
+          {{ "COMPONENTS.DATE_PICKER_MONTH_YEAR.SELECT_YEAR" | translate }}
+        </option>
+
+        @for (year of years(); track year) {
+          <option [value]="year">{{ year }}</option>
+        }
+      </select>
+    </div>
+  </div>
+}
