@@ -20,8 +20,32 @@
     "DELETING": "Deleting",
     "HOUR": "h",
     "COUNTRY": "Country",
+    "SELECT_COUNTRY": "Select a country",
     "CANCEL": "Cancel",
     "TITLE": "Title",
+    "ORGANIZATION": "Organization",
+    "TOWN": "Town",
+    "START_DATE": "Start Date",
+    "END_DATE": "End Date",
+    "DESCRIPTION": "Description",
+    "NOW": "Now",
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "SAVING": "Saving...",
+    "MONTHS": {
+      "JANUARY": "January",
+      "FEBRUARY": "February",
+      "MARCH": "March",
+      "APRIL": "April",
+      "MAY": "May",
+      "JUNE": "June",
+      "JULY": "July",
+      "AUGUST": "August",
+      "SEPTEMBER": "September",
+      "OCTOBER": "October",
+      "NOVEMBER": "November",
+      "DECEMBER": "December"
+    },
     "ERRORS": {
       "NO_ACCOUNT_FOR_EMAIL": "There are no account associated to this e-mail.",
       "NOT_EMAIL": "This e-mail address is invalid.",
@@ -42,6 +66,14 @@
     "IMAGE_CROPPER": {
       "TITLE": "Crop your image",
       "CROP": "Crop"
+    },
+    "SHOW_MORE": {
+      "SHOW_MORE": "Show More",
+      "SHOW_LESS": "Show Less"
+    },
+    "DATE_PICKER_MONTH_YEAR": {
+      "SELECT_MONTH": "Select a month",
+      "SELECT_YEAR": "Select a year"
     }
   },
   "REGISTER_PAGE": {
@@ -126,8 +158,6 @@
         "TITLE": "General",
         "CHANGE_PICTURE": "Change Picture",
         "DELETE_PICTURE": "Delete Picture",
-        "SELECT_COUNTRY": "Select a country",
-        "TOWN": "Town",
         "HOURLY_RATE": "Hourly Rate",
         "INFORMATIONS_UPDATED": "General informations updated.",
         "ERRORS": {
@@ -144,7 +174,14 @@
         "INFORMATIONS_UPDATED": "Skills updated."
       },
       "EXPERIENCES": {
-        "TITLE": "Experiences"
+        "TITLE": "Experiences",
+        "ADD_EXPERIENCE": "Add New Experience",
+        "COMPONENTS": {
+          "PROFILE_EDIT_EXPERIENCES_EDIT": {
+            "TITLE": "Edit Experience",
+            "WORK_HERE": "I currently work here."
+          }
+        }
       },
       "EDUCATION": {
         "TITLE": "Education"

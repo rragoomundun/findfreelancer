@@ -52,7 +52,7 @@
         class="form-select"
       >
         <option value="">
-          {{ "EDIT_PROFILE_PAGE.TABS.GENERAL.SELECT_COUNTRY" | translate }}
+          {{ "GENERAL.SELECT_COUNTRY" | translate }}
         </option>
         @for (country of countriesService.countries; track country) {
           <option [value]="country.code">{{ country.name }}</option>
@@ -62,7 +62,7 @@
     <div class="col-12 col-sm-6">
       <app-input
         [id]="'this-town'"
-        [label]="'EDIT_PROFILE_PAGE.TABS.GENERAL.TOWN' | translate"
+        [label]="'GENERAL.TOWN' | translate"
         [type]="'text'"
         [control]="'town'"
       >

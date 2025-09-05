@@ -1,0 +1,21 @@
+<div class="this-show-more">
+  <div>
+    @for (paragraph of paragraphs; track paragraph) {
+      <p>{{ paragraph }}</p>
+    }
+  </div>
+
+  @if (this.text()!.length > CROP_SIZE) {
+    <div class="text-end">
+      @if (show()) {
+        <button (click)="toggleShow()" class="btn btn-link">
+          {{ "COMPONENTS.SHOW_MORE.SHOW_LESS" | translate }}
+        </button>
+      } @else {
+        <button (click)="toggleShow()" class="btn btn-link">
+          {{ "COMPONENTS.SHOW_MORE.SHOW_MORE" | translate }}
+        </button>
+      }
+    </div>
+  }
+</div>

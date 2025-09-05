@@ -22,3 +22,19 @@ export const selectOnUpdateFreelancerSettingsIdentity = createSelector(
   selectFreelancerState,
   (state: FreelancerState) => state.onUpdateFreelancerSettingsIdentity,
 );
+export const selectFreelancerExperiences = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.experiences,
+);
+export const selectOnCreateExperience = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.onCreateExperience,
+);
+export const selectOnUpdateExperience = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.onUpdateExperience,
+);
+export const selectOnDeleteExperience = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.onDeleteExperience,
+);
