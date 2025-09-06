@@ -5,16 +5,21 @@ import { FreelancerState } from './freelancer.state';
 import * as FreelancerActions from './freelancer.actions';
 
 import { FreelancerExperience } from '../../models/FreelancerExperience';
+import { FreelancerEducation } from '../../models/FreelancerEducation';
 
 const initialState: FreelancerState = {
   freelancer: undefined,
   experiences: undefined,
+  educations: undefined,
   onGetFreelancer: 'false',
   onCreateExperience: 'false',
   onUpdateExperience: 'false',
   onDeleteExperience: {},
   updateFreelancerSettingsIdentityError: {},
   onUpdateFreelancerSettingsIdentity: 'false',
+  onCreateEducation: 'false',
+  onUpdateEducation: 'false',
+  onDeleteEducation: {},
 };
 
 export const freelancerReducer = createReducer(
@@ -208,6 +213,138 @@ export const freelancerReducer = createReducer(
       onDeleteExperience: {
         ...state.onDeleteExperience,
         [experienceId]: 'error',
+      },
+    }),
+  ),
+  on(
+    FreelancerActions.getFreelancerEducationsSuccess,
+    (state, { educations }) => ({
+      ...state,
+      educations,
+    }),
+  ),
+  on(FreelancerActions.createFreelancerEducationInit, (state) => ({
+    ...state,
+    onCreateEducation: 'false',
+  })),
+  on(FreelancerActions.createFreelancerEducation, (state) => ({
+    ...state,
+    onCreateEducation: 'true',
+  })),
+  on(
+    FreelancerActions.createFreelancerEducationSuccess,
+    (state, { education }) => {
+      const educations = [
+        ...(<FreelancerEducation[]>state.educations),
+        education,
+      ];
+      const sortedEducations = [...(<FreelancerEducation[]>educations)].sort(
+        (a, b) => {
+          if (!a.endDate) return -1;
+          if (!b.endDate) return 1;
+          return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
+        },
+      );
+
+      return {
+        ...state,
+        educations: sortedEducations,
+        onCreateEducation: 'success',
+        onDeleteEducation: {
+          ...(state.onDeleteEducation ?? {}),
+          [education._id]: 'false',
+        },
+      };
+    },
+  ),
+  on(FreelancerActions.createFreelancerExperienceError, (state) => ({
+    ...state,
+    onCreateEducation: 'error',
+  })),
+  on(FreelancerActions.updateFreelancerEducationInit, (state) => ({
+    ...state,
+    onUpdateEducation: 'false',
+  })),
+  on(FreelancerActions.updateFreelancerEducation, (state) => ({
+    ...state,
+    onUpdateEducation: 'true',
+  })),
+  on(
+    FreelancerActions.updateFreelancerEducationSuccess,
+    (state, { education }) => {
+      const updatedExperience = {
+        ...education,
+        startDate: new Date(education.startDate).toISOString(),
+        endDate: education.endDate
+          ? new Date(education.endDate).toISOString()
+          : null,
+      };
+      const updatedEducations = state.educations
+        ? state.educations.map((exp) =>
+            exp._id === updatedExperience._id ? updatedExperience : exp,
+          )
+        : [];
+      const sortedEducations = [...updatedEducations].sort((a, b) => {
+        if (!a.endDate) return -1;
+        if (!b.endDate) return 1;
+        return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
+      });
+
+      return {
+        ...state,
+        educations: sortedEducations,
+        onUpdateEducation: 'success',
+      };
+    },
+  ),
+  on(FreelancerActions.updateFreelancerEducationError, (state) => ({
+    ...state,
+    onUpdateEducation: 'error',
+  })),
+  on(
+    FreelancerActions.deleteFreelancerEducationInit,
+    (state, { educationsIds }) => {
+      const onDeleteEducation: { [key: string]: string } = {};
+
+      for (const id of educationsIds) {
+        onDeleteEducation[id] = 'false';
+      }
+
+      return { ...state, onDeleteEducation };
+    },
+  ),
+  on(FreelancerActions.deleteFreelancerEducation, (state, { educationId }) => {
+    return {
+      ...state,
+      onDeleteEducation: {
+        ...state.onDeleteEducation,
+        [educationId]: 'true',
+      },
+    };
+  }),
+  on(
+    FreelancerActions.deleteFreelancerEducationSuccess,
+    (state, { educationId }) => {
+      const educations = state.educations?.filter(
+        (education) => education._id !== educationId,
+      );
+      const { [educationId]: _, ...updateOnDeleteEducation } =
+        state.onDeleteEducation;
+
+      return {
+        ...state,
+        educations,
+        onDeleteEducation: updateOnDeleteEducation,
+      };
+    },
+  ),
+  on(
+    FreelancerActions.deleteFreelancerEducationError,
+    (state, { educationId }) => ({
+      ...state,
+      onDeleteEducation: {
+        ...state.onDeleteEducation,
+        [educationId]: 'error',
       },
     }),
   ),

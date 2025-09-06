@@ -1,0 +1,144 @@
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    @if (educationId()) {
+      <h4 class="modal-title">
+        {{
+          "EDIT_PROFILE_PAGE.TABS.EDUCATION.COMPONENTS.PROFILE_EDIT_EDUCATION_EDIT.TITLE"
+            | translate
+        }}
+      </h4>
+    } @else {
+      <h4 class="modal-title">
+        {{ "EDIT_PROFILE_PAGE.TABS.EDUCATION.ADD_EDUCATION" | translate }}
+      </h4>
+    }
+    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    @if (formGroup()) {
+      <form [formGroup]="formGroup()">
+        <div class="mb-3">
+          <app-input
+            [id]="'this-education-school'"
+            [label]="'GENERAL.SCHOOL' | translate"
+            [type]="'text'"
+            [control]="'school'"
+          ></app-input>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-sm-6 mb-3">
+            <app-input
+              [id]="'this-education-town'"
+              [label]="'GENERAL.TOWN' | translate"
+              [type]="'text'"
+              [control]="'town'"
+            ></app-input>
+          </div>
+          <div class="col-12 col-sm-6 mb-3">
+            <label for="this-education-country" class="form-label">
+              {{ "GENERAL.COUNTRY" | translate }}
+            </label>
+            <select
+              formControlName="countryCode"
+              id="this-education-country"
+              class="form-select"
+              required
+            >
+              <option value="">
+                {{ "GENERAL.SELECT_COUNTRY" | translate }}
+              </option>
+
+              @for (country of countriesService.countries; track country) {
+                <option [value]="country.code">{{ country.name }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            [formGroup]="formGroup().controls.startDate"
+            class="col-12 col-sm-6 mb-3"
+          >
+            <app-date-picker-month-year
+              [label]="'GENERAL.START_DATE' | translate"
+              [minDate]="{ month: 1, year: 1950 }"
+              [monthControlName]="'month'"
+              [yearControlName]="'year'"
+              [monthControl]="formGroup().controls.startDate.controls.month"
+              [yearControl]="formGroup().controls.startDate.controls.year"
+              (dateChanged)="onStartDateChanged($event)"
+            ></app-date-picker-month-year>
+          </div>
+
+          @if (formGroup().controls.studyingHere.value === false) {
+            <div
+              [formGroup]="formGroup().controls.endDate"
+              class="col-12 col-sm-6 mb-3"
+            >
+              <app-date-picker-month-year
+                [label]="'GENERAL.END_DATE' | translate"
+                [minDate]="minEndDate()"
+                [monthControlName]="'month'"
+                [yearControlName]="'year'"
+                [monthControl]="formGroup().controls.endDate.controls.month"
+                [yearControl]="formGroup().controls.endDate.controls.year"
+              ></app-date-picker-month-year>
+            </div>
+          }
+        </div>
+
+        <div class="mb-3 form-check">
+          <input
+            formControlName="studyingHere"
+            id="this-work-here"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label for="this-work-here" class="form-check-label">
+            {{
+              "EDIT_PROFILE_PAGE.TABS.EDUCATION.COMPONENTS.PROFILE_EDIT_EDUCATION_EDIT.STUDYING_HERE"
+                | translate
+            }}
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <app-text-area
+            [id]="'this-description'"
+            [label]="'GENERAL.DESCRIPTION' | translate"
+            [control]="'description'"
+            [rows]="10"
+          ></app-text-area>
+        </div>
+      </form>
+    }
+  </div>
+  <div class="modal-footer justify-content-center">
+    @if (
+      (onUpdateEducation$ | async) !== "true" ||
+      (onCreateEducation$ | async) !== "true"
+    ) {
+      <button
+        [disabled]="
+          formGroup().invalid ||
+          (formGroup().controls.studyingHere.value === false &&
+            (formGroup().controls.endDate.controls.month.value === '' ||
+              formGroup().controls.endDate.controls.year.value === ''))
+        "
+        (click)="onSaveClick()"
+        type="button"
+        class="btn btn-primary"
+      >
+        {{ "GENERAL.SAVE" | translate }}
+      </button>
+    } @else {
+      <button [disabled]="true" type="button" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+        &nbsp;
+        <span>{{ "GENERAL.SAVING" | translate }}</span>
+      </button>
+    }
+  </div>
+</ng-template>

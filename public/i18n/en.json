@@ -32,6 +32,7 @@
     "EDIT": "Edit",
     "SAVE": "Save",
     "SAVING": "Saving...",
+    "SCHOOL": "School",
     "MONTHS": {
       "JANUARY": "January",
       "FEBRUARY": "February",
@@ -184,7 +185,14 @@
         }
       },
       "EDUCATION": {
-        "TITLE": "Education"
+        "TITLE": "Education",
+        "ADD_EDUCATION": "Add New Education",
+        "COMPONENTS": {
+          "PROFILE_EDIT_EDUCATION_EDIT": {
+            "TITLE": "Edit Education",
+            "STUDYING_HERE": "I currently study here."
+          }
+        }
       },
       "LANGUAGES": {
         "TITLE": "Languages"

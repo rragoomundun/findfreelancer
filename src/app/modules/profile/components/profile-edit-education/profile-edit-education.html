@@ -1,1 +1,72 @@
-<p>profile-edit-education works!</p>
+@let educations = educations$ | async;
+
+@for (education of educations; track education; let i = $index) {
+  @let onDeleteEducation =
+    (onDeleteEducation$ | async)?.[education._id] ?? "false";
+
+  <div class="this-education mb-3">
+    <div class="row">
+      <div class="col-6 col-sm-7 col-md-8">
+        <div class="fw-bold">
+          <span>{{ education.school }}</span>
+          <span> · </span>
+          <span>{{ education.town }}</span>
+          <span>, </span>
+          <span>
+            {{ countriesService.getCountryName(education.countryCode) }}
+          </span>
+
+          <br />
+
+          <span>{{ dateService.getDateMonthYYYY(education.startDate) }}</span>
+          <span> - </span>
+
+          @if (education.endDate) {
+            <span>{{ dateService.getDateMonthYYYY(education.endDate) }}</span>
+          } @else {
+            <span>{{ "GENERAL.NOW" | translate }}</span>
+          }
+        </div>
+      </div>
+      <div class="col-6 col-sm-5 col-md-4 text-end">
+        @if (onDeleteEducation !== "true") {
+          <button
+            (click)="onEditEducationClick(education)"
+            class="btn btn-primary me-1"
+          >
+            {{ "GENERAL.EDIT" | translate }}
+          </button>
+        }
+
+        @if (onDeleteEducation !== "true") {
+          <button
+            (click)="onDeleteEducationClick(education._id)"
+            class="btn btn-danger"
+          >
+            {{ "GENERAL.DELETE" | translate }}
+          </button>
+        } @else {
+          <button [disabled]="true" class="btn btn-danger">
+            {{ "GENERAL.DELETING" | translate }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <app-show-more [text]="education.description"></app-show-more>
+  </div>
+
+  @if (educations!.length > 0) {
+    <hr />
+  }
+}
+
+<div class="text-center">
+  <button (click)="onEditEducationClick(null)" class="btn btn-primary">
+    {{ "EDIT_PROFILE_PAGE.TABS.EDUCATION.ADD_EDUCATION" | translate }}
+  </button>
+</div>
+
+<app-profile-edit-education-edit
+  #profileEditEducationEditComponent
+></app-profile-edit-education-edit>

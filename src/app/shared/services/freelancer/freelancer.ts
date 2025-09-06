@@ -6,6 +6,7 @@ import { Freelancer as FreelancerModel } from '../../models/Freelancer';
 import { FreelancerGeneralInformation } from '../../models/FreelancerGeneralInformation';
 import { FreelancerPresentationInformation } from '../../models/FreelancerPresentationInformation';
 import { FreelancerExperience } from '../../models/FreelancerExperience';
+import { FreelancerEducation } from '../../models/FreelancerEducation';
 
 @Injectable({
   providedIn: 'root',
@@ -120,6 +121,38 @@ export class Freelancer {
   deleteExperience(id: string): Observable<null> {
     return this.http.delete<null>(
       `${this.API_PREFIX}/profile/experience/${id}`,
+      { withCredentials: true },
+    );
+  }
+
+  getEducations(): Observable<FreelancerEducation[]> {
+    return this.http.get<FreelancerEducation[]>(
+      `${this.API_PREFIX}/education`,
+      { withCredentials: true },
+    );
+  }
+
+  createEducation(
+    education: FreelancerEducation,
+  ): Observable<FreelancerEducation> {
+    return this.http.post<FreelancerEducation>(
+      `${this.API_PREFIX}/profile/education`,
+      education,
+      { withCredentials: true },
+    );
+  }
+
+  updateEducation(education: FreelancerEducation): Observable<null> {
+    return this.http.put<null>(
+      `${this.API_PREFIX}/profile/education/${education._id}`,
+      education,
+      { withCredentials: true },
+    );
+  }
+
+  deleteEducation(educationId: string): Observable<null> {
+    return this.http.delete<null>(
+      `${this.API_PREFIX}/profile/education/${educationId}`,
       { withCredentials: true },
     );
   }
