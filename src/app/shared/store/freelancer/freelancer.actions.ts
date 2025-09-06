@@ -2,6 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { Freelancer } from '../../models/Freelancer';
 import { FreelancerExperience } from '../../models/FreelancerExperience';
+import { FreelancerEducation } from '../../models/FreelancerEducation';
 
 export const getFreelancer = createAction('[Freelancer] Get Freelancer');
 export const getFreelancerSuccess = createAction(
@@ -84,4 +85,58 @@ export const deleteFreelancerExperienceSuccess = createAction(
 export const deleteFreelancerExperienceError = createAction(
   '[Freelancer] Delete Experience Error',
   props<{ experienceId: string }>(),
+);
+export const getFreelancerEducations = createAction(
+  '[Freelancer] Get Educations',
+);
+export const getFreelancerEducationsSuccess = createAction(
+  '[Freelancer] Get Educations Success',
+  props<{ educations: FreelancerEducation[] }>(),
+);
+export const getFreelancerEducationsError = createAction(
+  '[Freelancer] Get Educations Error',
+);
+export const createFreelancerEducationInit = createAction(
+  '[Freelancer] Create Education Init',
+);
+export const createFreelancerEducation = createAction(
+  '[Freelancer] Create Education',
+  props<{ education: FreelancerEducation }>(),
+);
+export const createFreelancerEducationSuccess = createAction(
+  '[Freelancer] Create Education Success',
+  props<{ education: FreelancerEducation }>(),
+);
+export const createFreelancerEducationError = createAction(
+  '[Freelancer] Create Education Error',
+);
+export const updateFreelancerEducationInit = createAction(
+  '[Freelancer] Update Education Init',
+);
+export const updateFreelancerEducation = createAction(
+  '[Freelancer] Update Education',
+  props<{ education: FreelancerEducation }>(),
+);
+export const updateFreelancerEducationSuccess = createAction(
+  '[Freelancer] Update Education Success',
+  props<{ education: FreelancerEducation }>(),
+);
+export const updateFreelancerEducationError = createAction(
+  '[Freelancer] Update Education Error',
+);
+export const deleteFreelancerEducationInit = createAction(
+  '[Freelancer] Delete Education Init',
+  props<{ educationsIds: string[] }>(),
+);
+export const deleteFreelancerEducation = createAction(
+  '[Freelancer] Delete Education',
+  props<{ educationId: string }>(),
+);
+export const deleteFreelancerEducationSuccess = createAction(
+  '[Freelancer] Delete Education Success',
+  props<{ educationId: string }>(),
+);
+export const deleteFreelancerEducationError = createAction(
+  '[Freelancer] Delete Education Error',
+  props<{ educationId: string }>(),
 );

@@ -9,6 +9,7 @@ import { Freelancer } from '../../models/Freelancer';
 import { Freelancer as FreelancerService } from '../../services/freelancer/freelancer';
 import { Auth as AuthService } from '../../../modules/auth/services/auth/auth';
 import { FreelancerExperience } from '../../models/FreelancerExperience';
+import { FreelancerEducation } from '../../models/FreelancerEducation';
 
 @Injectable()
 export class FreelancerEffects {
@@ -132,6 +133,72 @@ export class FreelancerEffects {
               FreelancerActions.deleteFreelancerExperienceError({
                 experienceId,
               }),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  getFreelancerEducations = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.getFreelancerEducations),
+      exhaustMap(() =>
+        this.freelancerService.getEducations().pipe(
+          map((educations: FreelancerEducation[]) =>
+            FreelancerActions.getFreelancerEducationsSuccess({ educations }),
+          ),
+          catchError(() => of(FreelancerActions.getFreelancerEducationsError)),
+        ),
+      ),
+    ),
+  );
+
+  createFreelancerEducation = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.createFreelancerEducation),
+      exhaustMap(({ education }) =>
+        this.freelancerService.createEducation(education).pipe(
+          map((createdEducation) =>
+            FreelancerActions.createFreelancerEducationSuccess({
+              education: createdEducation,
+            }),
+          ),
+          catchError(() =>
+            of(FreelancerActions.createFreelancerEducationError),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  updateFreelancerEducation = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.updateFreelancerEducation),
+      exhaustMap(({ education }) =>
+        this.freelancerService.updateEducation(education).pipe(
+          map(() =>
+            FreelancerActions.updateFreelancerEducationSuccess({ education }),
+          ),
+          catchError(() =>
+            of(FreelancerActions.updateFreelancerEducationError),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  deleteFreelancerEducation = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FreelancerActions.deleteFreelancerEducation),
+      mergeMap(({ educationId }) =>
+        this.freelancerService.deleteEducation(educationId).pipe(
+          map(() =>
+            FreelancerActions.deleteFreelancerEducationSuccess({ educationId }),
+          ),
+          catchError(() =>
+            of(
+              FreelancerActions.deleteFreelancerEducationError({ educationId }),
             ),
           ),
         ),

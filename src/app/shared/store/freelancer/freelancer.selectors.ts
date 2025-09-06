@@ -38,3 +38,19 @@ export const selectOnDeleteExperience = createSelector(
   selectFreelancerState,
   (state: FreelancerState) => state.onDeleteExperience,
 );
+export const selectFreelancerEducations = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.educations,
+);
+export const selectOnCreateEducation = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.onCreateEducation,
+);
+export const selectOnUpdateEducation = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.onUpdateEducation,
+);
+export const selectOnDeleteEducation = createSelector(
+  selectFreelancerState,
+  (state: FreelancerState) => state.onDeleteEducation,
+);
