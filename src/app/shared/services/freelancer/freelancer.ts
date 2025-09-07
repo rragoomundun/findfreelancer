@@ -7,6 +7,7 @@ import { FreelancerGeneralInformation } from '../../models/FreelancerGeneralInfo
 import { FreelancerPresentationInformation } from '../../models/FreelancerPresentationInformation';
 import { FreelancerExperience } from '../../models/FreelancerExperience';
 import { FreelancerEducation } from '../../models/FreelancerEducation';
+import { FreelancerLanguage } from '../../models/FreelancerLanguage';
 
 @Injectable({
   providedIn: 'root',
@@ -154,6 +155,22 @@ export class Freelancer {
     return this.http.delete<null>(
       `${this.API_PREFIX}/profile/education/${educationId}`,
       { withCredentials: true },
+    );
+  }
+
+  getLanguages(): Observable<FreelancerLanguage[]> {
+    return this.http.get<FreelancerLanguage[]>(`${this.API_PREFIX}/languages`, {
+      withCredentials: true,
+    });
+  }
+
+  updateLanguages(languages: FreelancerLanguage[]): Observable<null> {
+    return this.http.put<null>(
+      `${this.API_PREFIX}/profile/languages`,
+      { languages },
+      {
+        withCredentials: true,
+      },
     );
   }
 }
