@@ -101,6 +101,16 @@ body {
   background-color: var(--app-color-primary-hover);
 }
 
+.btn-outline-primary {
+  border-color: var(--app-color-primary);
+  color: var(--app-color-primary);
+}
+
+.btn-outline-primary:hover {
+  border-color: var(--app-color-primary);
+  background-color: var(--app-color-primary);
+}
+
 .form-check-input:checked {
   background-color: var(--app-color-primary);
   border-color: var(--app-color-primary);

@@ -33,6 +33,13 @@
     "SAVE": "Save",
     "SAVING": "Saving...",
     "SCHOOL": "School",
+    "SELECT_LANGUAGE": "Select a language",
+    "LANGUAGES": {
+      "BASIC": "Basic",
+      "CONVERSATIONAL": "Conversational",
+      "FLUENT": "Fluent",
+      "NATIVE-BILINGUAL": "Native-Bilingual"
+    },
     "MONTHS": {
       "JANUARY": "January",
       "FEBRUARY": "February",
@@ -195,7 +202,10 @@
         }
       },
       "LANGUAGES": {
-        "TITLE": "Languages"
+        "TITLE": "Languages",
+        "SELECT_LEVEL": "Select a level",
+        "ADD_LANGUAGE": "Add Language",
+        "LANGUAGES_UPDATED": "Languages successfully updated."
       },
       "CONTACT": {
         "TITLE": "Contact"
