@@ -8,6 +8,7 @@ import { FreelancerPresentationInformation } from '../../models/FreelancerPresen
 import { FreelancerExperience } from '../../models/FreelancerExperience';
 import { FreelancerEducation } from '../../models/FreelancerEducation';
 import { FreelancerLanguage } from '../../models/FreelancerLanguage';
+import { FreelancerContact } from '../../models/FreelancerContact';
 
 @Injectable({
   providedIn: 'root',
@@ -172,5 +173,17 @@ export class Freelancer {
         withCredentials: true,
       },
     );
+  }
+
+  getContact(): Observable<FreelancerContact> {
+    return this.http.get<FreelancerContact>(`${this.API_PREFIX}/contact`, {
+      withCredentials: true,
+    });
+  }
+
+  updateContact(contact: FreelancerContact): Observable<void> {
+    return this.http.put<void>(`${this.API_PREFIX}/profile/contact`, contact, {
+      withCredentials: true,
+    });
   }
 }
