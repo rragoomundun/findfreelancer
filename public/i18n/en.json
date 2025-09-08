@@ -10,6 +10,7 @@
     "FIRST_NAME": "First Name",
     "LAST_NAME": "Last Name",
     "EMAIL": "E-Mail",
+    "PHONE": "Phone",
     "PASSWORD": "Password",
     "PASSWORD_CONFIRMATION": "Password Confirmation",
     "SUBMIT": "Submit",
@@ -208,7 +209,8 @@
         "LANGUAGES_UPDATED": "Languages successfully updated."
       },
       "CONTACT": {
-        "TITLE": "Contact"
+        "TITLE": "Contact",
+        "INFORMATIONS_UPDATED": "Contact informations updated."
       }
     }
   }

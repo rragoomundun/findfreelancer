@@ -1,1 +1,45 @@
-<p>profile-edit-contact works!</p>
+<form [formGroup]="formGroup()">
+  <div class="mb-3">
+    <app-input
+      [id]="'this-email'"
+      [label]="'GENERAL.EMAIL' | translate"
+      [type]="'text'"
+      [control]="'email'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3">
+    <app-input
+      [id]="'this-phone'"
+      [label]="'GENERAL.PHONE' | translate"
+      [type]="'text'"
+      [control]="'phone'"
+    ></app-input>
+  </div>
+
+  <hr />
+
+  <div class="text-center">
+    @if (onUpdateContact() === "success") {
+      <small class="text-success">
+        {{ "EDIT_PROFILE_PAGE.TABS.CONTACT.INFORMATIONS_UPDATED" | translate }}
+      </small>
+
+      <br /><br />
+    }
+
+    @if (onUpdateContact() !== "true") {
+      <button (click)="onSubmit()" class="btn btn-primary">
+        {{ "GENERAL.SAVE" | translate }}
+      </button>
+    } @else {
+      <button [disabled] class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+
+        &nbsp;
+
+        <span>{{ "GENERAL.SAVING" | translate }}</span>
+      </button>
+    }
+  </div>
+</form>
