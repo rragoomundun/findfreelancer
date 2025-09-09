@@ -30,6 +30,13 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'freelancer',
+    loadChildren: () =>
+      import('./modules/freelancer/freelancer.routes').then(
+        (m) => m.freelancerRoutes,
+      ),
+  },
+  {
     path: '**',
     redirectTo: '/auth/login',
   },

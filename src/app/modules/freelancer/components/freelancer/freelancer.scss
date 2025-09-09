@@ -1,0 +1,27 @@
+img {
+  width: var(--app-profile-picture-full-size);
+  height: var(--app-profile-picture-full-size);
+}
+
+#this-header {
+  display: flex;
+  align-items: center;
+
+  div:last-child {
+    flex-grow: 1;
+    text-align: right;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+
+    div {
+      width: 100%;
+      text-align: center !important;
+    }
+  }
+}
+
+#this-not-found {
+  margin-top: 20%;
+}

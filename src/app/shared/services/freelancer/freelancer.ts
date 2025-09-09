@@ -9,6 +9,8 @@ import { FreelancerExperience } from '../../models/FreelancerExperience';
 import { FreelancerEducation } from '../../models/FreelancerEducation';
 import { FreelancerLanguage } from '../../models/FreelancerLanguage';
 import { FreelancerContact } from '../../models/FreelancerContact';
+import { FreelancerProfile } from '../../models/FreelancerProfile';
+import { FreelancerVisibility } from '../../models/FreelancerVisibility';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +24,16 @@ export class Freelancer {
     return this.http.get<FreelancerModel>(this.API_PREFIX, {
       withCredentials: true,
     });
+  }
+
+  getFreelancer(id: string): Observable<FreelancerProfile> {
+    return this.http.get<FreelancerProfile>(`${this.API_PREFIX}/${id}`);
+  }
+
+  getVisibility(id: string): Observable<FreelancerVisibility> {
+    return this.http.get<FreelancerVisibility>(
+      `${this.API_PREFIX}/${id}/visibility`,
+    );
   }
 
   updateIdentity(params: {

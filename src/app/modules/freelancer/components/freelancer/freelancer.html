@@ -1,0 +1,255 @@
+<div class="container">
+  @if (onGetFreelancer() === "success") {
+    <div id="this-header" class="mb-3">
+      <div>
+        @if (freelancer()?.image) {
+          <img
+            [src]="freelancer()?.image"
+            alt="{{ freelancer()?.firstName }} {{
+              freelancer()?.lastName
+            }} image"
+            class="rounded-circle ms-3 me-3"
+          />
+        } @else {
+          <span class="fa-regular fa-circle-user fa-8x"></span>
+        }
+      </div>
+
+      <div>
+        <span class="fs-4">
+          {{ freelancer()?.firstName }} {{ freelancer()?.lastName }}
+        </span>
+
+        <br />
+
+        <span class="fs-6">
+          <span class="fa-solid fa-location-pin"></span>
+          <span>{{ freelancer()?.location?.town }}</span>
+          <span>, </span>
+          <span>
+            {{
+              countriesService.getCountryName(
+                freelancer()?.location?.countryCode
+              )
+            }}
+          </span>
+        </span>
+      </div>
+
+      <div class="fs-4">
+        <span>$</span>
+        <span>{{ freelancer()?.hourlyRate }}</span>
+        <span>/</span>
+        <span>{{ "GENERAL.HOUR" | translate }}</span>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="mb-3">
+      <h4>{{ freelancer()?.title }}</h4>
+
+      <p>{{ freelancer()?.presentationText }}</p>
+    </div>
+
+    @if (freelancer()?.skills?.length) {
+      <hr />
+
+      <div class="mb-3">
+        <h4>{{ "FREELANCER_PAGE.SKILLS" | translate }}</h4>
+
+        <div>
+          @for (skill of freelancer()?.skills; track skill) {
+            <span class="app-skill">
+              {{ skill }}
+            </span>
+          }
+        </div>
+      </div>
+    }
+
+    @if (freelancer()?.experiences?.length) {
+      <hr />
+
+      <div class="mb-3">
+        <h4>{{ "FREELANCER_PAGE.EXPERIENCES" | translate }}</h4>
+
+        @for (experience of freelancer()?.experiences; track experience) {
+          <div class="mb-3">
+            <div>
+              <span class="fw-bold">{{ experience.title }}</span>
+              <span class="fw-bold">&nbsp;·&nbsp;</span>
+              <span class="fw-bold">{{ experience.organization }}</span>
+            </div>
+
+            <div>
+              <span class="fw-bold">
+                {{ dateService.getDateMonthYYYY(experience.startDate) }}
+              </span>
+              <span class="fw-bold">&nbsp;-&nbsp;</span>
+              <span class="fw-bold">
+                @if (experience.endDate) {
+                  {{ dateService.getDateMonthYYYY(experience.endDate) }}
+                } @else {
+                  {{ "GENERAL.NOW" | translate }}
+                }
+              </span>
+            </div>
+
+            <div>
+              <app-show-more [text]="experience.description"></app-show-more>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (freelancer()?.educations?.length) {
+      <hr />
+
+      <div class="mb-3">
+        <h4>{{ "FREELANCER_PAGE.EDUCATION" | translate }}</h4>
+
+        @for (education of freelancer()?.educations; track education) {
+          <div class="mb-3">
+            <div>
+              <span class="fw-bold">
+                {{ education.school }}
+              </span>
+              <span class="fw-bold"> &nbsp;·&nbsp; </span>
+              <span class="fw-bold">
+                {{ education.town }}
+              </span>
+              <span class="fw-bold"> , </span>
+              <span class="fw-bold">
+                {{ countriesService.getCountryName(education.countryCode) }}
+              </span>
+            </div>
+
+            <div>
+              <span class="fw-bold">
+                {{ dateService.getDateMonthYYYY(education.startDate) }}
+              </span>
+              <span class="fw-bold">&nbsp;-&nbsp;</span>
+              <span class="fw-bold">
+                @if (education.endDate) {
+                  {{ dateService.getDateMonthYYYY(education.endDate) }}
+                } @else {
+                  {{ "GENERAL.NOW" | translate }}
+                }
+              </span>
+            </div>
+
+            <div>
+              <app-show-more [text]="education.description"></app-show-more>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (freelancer()?.languages?.length) {
+      <hr />
+
+      <div class="mb-3">
+        <h4>{{ "FREELANCER_PAGE.LANGUAGES" | translate }}</h4>
+
+        <ul>
+          @for (language of freelancer()?.languages; track language) {
+            <li>
+              {{ languageService.getLanguageName(language.code) }}:
+
+              @switch (language.level) {
+                @case ("basic") {
+                  {{ "GENERAL.LANGUAGES.BASIC" | translate }}
+                }
+                @case ("conversational") {
+                  {{ "GENERAL.LANGUAGES.CONVERSATIONAL" | translate }}
+                }
+                @case ("fluent") {
+                  {{ "GENERAL.LANGUAGES.FLUENT" | translate }}
+                }
+                @case ("native-bilingual") {
+                  {{ "GENERAL.LANGUAGES.NATIVE-BILINGUAL" | translate }}
+                }
+              }
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
+    <hr />
+
+    <div class="mb-3">
+      <h4>{{ "FREELANCER_PAGE.CONTACT" | translate }}</h4>
+
+      <ul>
+        @if (freelancer()?.contact?.email) {
+          <li>
+            {{ "GENERAL.EMAIL" | translate }}:
+            {{ freelancer()?.contact?.email }}
+          </li>
+        }
+
+        @if (freelancer()?.contact?.phone) {
+          <li>
+            {{ "GENERAL.PHONE" | translate }}:
+            {{ freelancer()?.contact?.phone }}
+          </li>
+        }
+      </ul>
+    </div>
+  } @else if (onGetFreelancer() === "error") {
+    <div id="this-not-found" class="text-center">
+      <h1>{{ "FREELANCER_PAGE.404" | translate }}</h1>
+      <p>{{ "FREELANCER_PAGE.NOT_FOUND" | translate }}</p>
+    </div>
+  } @else if (onGetFreelancer() === "invisible") {
+    <h3>{{ "FREELANCER_PAGE.INVISIBLE.HEADING" | translate }}</h3>
+
+    <p>{{ "FREELANCER_PAGE.INVISIBLE.MESSAGE" | translate }}</p>
+
+    <ul>
+      @if (visibilityInfos()?.missing?.title) {
+        <li>{{ "FREELANCER_PAGE.INVISIBLE.TITLE" | translate }}</li>
+      }
+
+      @if (visibilityInfos()?.missing?.presentationText) {
+        <li>{{ "FREELANCER_PAGE.INVISIBLE.PRESENTATION_TEXT" | translate }}</li>
+      }
+
+      @if (visibilityInfos()?.missing?.hourlyRate) {
+        <li>{{ "FREELANCER_PAGE.INVISIBLE.HOURLY_RATE" | translate }}</li>
+      }
+
+      @if (visibilityInfos()?.missing?.location?.town) {
+        <li>{{ "GENERAL.TOWN" | translate }}</li>
+      }
+
+      @if (visibilityInfos()?.missing?.location?.countryCode) {
+        <li>{{ "GENERAL.COUNTRY" | translate }}</li>
+      }
+
+      @if (
+        visibilityInfos()?.missing?.contact?.email &&
+        visibilityInfos()?.missing?.contact?.phone
+      ) {
+        <li>{{ "GENERAL.EMAIL" | translate }}</li>
+        <li>{{ "GENERAL.PHONE" | translate }}</li>
+      } @else {
+        @if (visibilityInfos()?.missing?.contact?.email) {
+          <li>{{ "GENERAL.EMAIL" | translate }}</li>
+        }
+
+        @if (visibilityInfos()?.missing?.contact?.phone) {
+          <li>{{ "GENERAL.PHONE" | translate }}</li>
+        }
+      }
+    </ul>
+
+    <a routerLink="/profile">
+      {{ "FREELANCER_PAGE.INVISIBLE.COMPLETE_INFORMATION" | translate }}
+    </a>
+  }
+</div>

@@ -15,7 +15,7 @@ export class Countries {
     }));
   }
 
-  getCountryName(countryCode: string): string {
+  getCountryName(countryCode: string | null | undefined): string {
     return this.countries.find((country) => countryCode === country.code)!.name;
   }
 }

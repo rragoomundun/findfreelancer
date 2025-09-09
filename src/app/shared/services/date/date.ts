@@ -31,9 +31,13 @@ export class DateService {
     });
   }
 
-  getDateMonthYYYY(date: Date | string): string {
-    const dateObj = new Date(date);
+  getDateMonthYYYY(date: Date | string | null): string {
+    if (date) {
+      const dateObj = new Date(date);
 
-    return `${this.months()[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+      return `${this.months()[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+    }
+
+    return '';
   }
 }

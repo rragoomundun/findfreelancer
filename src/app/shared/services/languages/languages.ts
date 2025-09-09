@@ -16,4 +16,8 @@ export class Languages {
       })),
     );
   }
+
+  getLanguageName(code: string) {
+    return this.languages().find((language) => language.code === code)?.name;
+  }
 }

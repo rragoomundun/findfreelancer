@@ -65,7 +65,8 @@
     }
   },
   "HEADER": {
-    "SEARCH": "Search for freelancers..."
+    "SEARCH": "Search for freelancers...",
+    "MY_PROFILE": "My Profile"
   },
   "FOOTER": {
     "PRIVACY": "Privacy Policy",
@@ -212,6 +213,24 @@
         "TITLE": "Contact",
         "INFORMATIONS_UPDATED": "Contact informations updated."
       }
+    }
+  },
+  "FREELANCER_PAGE": {
+    "TODO": "ADD TITLE",
+    "SKILLS": "Skills",
+    "EXPERIENCES": "Experiences",
+    "EDUCATION": "Education",
+    "LANGUAGES": "Languages",
+    "CONTACT": "Contact",
+    "404": "404: Not Found :(",
+    "NOT_FOUND": "Cannot find freelancer",
+    "INVISIBLE": {
+      "HEADING": "Profile Hidden",
+      "MESSAGE": "Your profile is currently hidden because it is incomplete. To make your profile visible, please complete the following information:",
+      "HOURLY_RATE": "Hourly Rate",
+      "TITLE": "Title",
+      "PRESENTATION_TEXT": "Presentation Text",
+      "COMPLETE_INFORMATION": "Complete my information"
     }
   }
 }
