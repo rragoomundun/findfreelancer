@@ -45,7 +45,11 @@
           </select>
         </div>
         <div class="col-4 col-md-2 text-end">
-          <button (click)="onDeleteLanguageClick(i)" class="btn btn-danger">
+          <button
+            (click)="onDeleteLanguageClick(i)"
+            class="btn btn-danger"
+            type="button"
+          >
             {{ "GENERAL.DELETE" | translate }}
           </button>
         </div>

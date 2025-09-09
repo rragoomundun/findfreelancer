@@ -95,6 +95,21 @@
                 <li>
                   <a
                     (click)="hideHamburgerMenu()"
+                    routerLink="/freelancer/{{ (freelancer$ | async)?._id }}"
+                    class="dropdown-item"
+                  >
+                    <span class="fa-regular fa-circle-user"></span>
+
+                    &nbsp;
+
+                    <span>
+                      {{ "HEADER.MY_PROFILE" | translate }}
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    (click)="hideHamburgerMenu()"
                     routerLink="/profile"
                     class="dropdown-item"
                   >
