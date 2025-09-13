@@ -15,6 +15,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   NgOptionTemplateDirective,
@@ -27,6 +28,7 @@ import { Input as InputComponent } from '../../../../shared/components/input/inp
 import { Countries as CountriesService } from '../../../../shared/services/countries/countries';
 import { Languages as LanguagesService } from '../../../../shared/services/languages/languages';
 import { Search as SearchService } from '../../services/search/search';
+import { Translation as TranslationService } from '../../../../shared/services/translation/translation';
 
 import { FreelancerSearchResult } from '../../models/FreelancerSearchResult';
 
@@ -49,7 +51,9 @@ import { FreelancerSearchResult } from '../../models/FreelancerSearchResult';
 export class Search implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
+  private titleService = inject(Title);
   private searchService = inject(SearchService);
+  private translationService = inject(TranslationService);
 
   countriesService = inject(CountriesService);
   languagesService = inject(LanguagesService);
@@ -143,6 +147,10 @@ export class Search implements OnInit {
       if (page) {
         this.currentPage.set(Number(page));
       }
+
+      this.titleService.setTitle(
+        `${query} - ${this.translationService.instant('SEARCH_PAGE.TITLE')} - ${this.translationService.instant('APP.TITLE')}`,
+      );
 
       this.onSearchClick();
     });
