@@ -1,5 +1,6 @@
 import { Component, signal, inject, DestroyRef } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 
@@ -13,6 +14,7 @@ import { Freelancer as FreelancerService } from '../../../../shared/services/fre
 import { Countries as CountriesServices } from '../../../../shared/services/countries/countries';
 import { DateService } from '../../../../shared/services/date/date';
 import { Languages as LanguagesService } from '../../../../shared/services/languages/languages';
+import { Translation as TranslationService } from '../../../../shared/services/translation/translation';
 
 import { Freelancer as FreelancerModel } from '../../../../shared/models/Freelancer';
 import { FreelancerProfile } from '../../../../shared/models/FreelancerProfile';
@@ -27,6 +29,8 @@ import { FreelancerVisibility } from '../../../../shared/models/FreelancerVisibi
 export class Freelancer {
   private store = inject(Store<AppState>);
   private destroyRef = inject(DestroyRef);
+  private titleService = inject(Title);
+  private translationService = inject(TranslationService);
   private freelancerService = inject(FreelancerService);
   private activatedRoute = inject(ActivatedRoute);
 
@@ -47,6 +51,10 @@ export class Freelancer {
       next: (freelancer: FreelancerProfile) => {
         this.freelancer.set(freelancer);
         this.onGetFreelancer.set('success');
+
+        this.titleService.setTitle(
+          `${this.freelancer()?.firstName} ${this.freelancer()?.lastName} - ${this.translationService.instant('APP.TITLE')}`,
+        );
       },
       error: () => {
         const subscription = this.store
@@ -59,7 +67,14 @@ export class Freelancer {
                   this.onGetFreelancer.set('invisible');
                 },
               });
+
+              this.titleService.setTitle(
+                `${this.translationService.instant('FREELANCER_PAGE.INVISIBLE.HEADING')} - ${this.translationService.instant('APP.TITLE')}`,
+              );
             } else {
+              this.titleService.setTitle(
+                `${this.translationService.instant('FREELANCER_PAGE.NOT_FOUND_TITLE')} - ${this.translationService.instant('APP.TITLE')}`,
+              );
               this.onGetFreelancer.set('error');
             }
           });

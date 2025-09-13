@@ -3,9 +3,16 @@ import {
   Component,
   HostListener,
   inject,
+  signal,
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -21,16 +28,23 @@ import {
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule, TranslateModule, AsyncPipe],
+  imports: [ReactiveFormsModule, RouterModule, TranslateModule, AsyncPipe],
   templateUrl: './header.html',
   styleUrl: './header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
   private store = inject(Store<AppState>);
+  private router = inject(Router);
 
   freelancer$: Observable<Freelancer | null | undefined>;
   onGetFreelancer$: Observable<string>;
+
+  formGroup = signal(
+    new FormGroup({
+      query: new FormControl('', [Validators.required]),
+    }),
+  );
 
   constructor() {
     this.freelancer$ = this.store.select(selectFreelancer);
@@ -61,5 +75,12 @@ export class Header {
 
   onLogoutClick(): void {
     this.store.dispatch(FreelancerActions.logoutFreelancer());
+  }
+
+  onSearch(): void {
+    const query = this.formGroup().controls.query.value;
+
+    this.router.navigate(['/search'], { queryParams: { query } });
+    this.formGroup().controls.query.setValue('');
   }
 }

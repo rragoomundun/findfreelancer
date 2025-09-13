@@ -3,6 +3,9 @@
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
 
+/* Importing NgSelect CSS file. */
+@import "@ng-select/ng-select/themes/default.theme.css";
+
 /* Custom variables */
 :root {
   --app-shadow-blur: 10px;
@@ -11,10 +14,11 @@
   --app-shadow-color-dark: #ccc;
 
   --app-color-white: #fff;
+  --app-color-red: #ff0000;
   --app-color-primary: #104c68;
   --app-color-primary-hover: #0d6791;
 
-  --app-skills-color: #eee;
+  --app-skills-color: #e9e9e9;
 
   --app-transition-time: 0.2s;
 
@@ -66,6 +70,16 @@ body {
   margin-bottom: 0.5rem;
   border-radius: var(--bs-border-radius);
   background-color: var(--app-skills-color);
+}
+
+/* NgSelect */
+ng-select {
+  .ng-select-container,
+  ng-dropdown-panel,
+  .ng-dropdown-panel-items {
+    border-radius: var(--bs-border-radius) !important;
+    border-color: var(--bs-border-color) !important;
+  }
 }
 
 /* Bootstrap customization */
@@ -168,5 +182,26 @@ body {
 
   .nav-link.active {
     background-color: var(--app-color-primary);
+  }
+}
+
+.pagination {
+  .page-link {
+    border-radius: var(--bs-border-radius);
+    margin: 0 0.5rem;
+    color: var(--app-color-white);
+    background-color: var(--app-color-primary);
+    border-color: var(--app-color-primary);
+  }
+
+  .page-link:hover {
+    background-color: var(--app-color-primary-hover);
+    border-color: var(--app-color-primary-hover);
+  }
+
+  .page-link-empty {
+    background-color: var(--app-color-white) !important;
+    border-color: var(--app-color-white) !important;
+    color: var(--bs-body-color);
   }
 }

@@ -37,6 +37,11 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'search',
+    loadChildren: () =>
+      import('./modules/search/search.routes').then((m) => m.searchRoutes),
+  },
+  {
     path: '**',
     redirectTo: '/auth/login',
   },
