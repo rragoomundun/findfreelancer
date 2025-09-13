@@ -21,7 +21,7 @@
     "DELETING": "Deleting",
     "HOUR": "h",
     "COUNTRY": "Country",
-    "SELECT_COUNTRY": "Select a country",
+    "COUNTRIES": "Countries",
     "CANCEL": "Cancel",
     "TITLE": "Title",
     "ORGANIZATION": "Organization",
@@ -34,6 +34,8 @@
     "SAVE": "Save",
     "SAVING": "Saving...",
     "SCHOOL": "School",
+    "MIN": "Min",
+    "MAX": "Max",
     "SELECT_LANGUAGE": "Select a language",
     "LANGUAGES": {
       "BASIC": "Basic",
@@ -224,6 +226,7 @@
     "CONTACT": "Contact",
     "404": "404: Not Found :(",
     "NOT_FOUND": "Cannot find freelancer",
+    "NOT_FOUND_TITLE": "Freelancer Not Found",
     "INVISIBLE": {
       "HEADING": "Profile Hidden",
       "MESSAGE": "Your profile is currently hidden because it is incomplete. To make your profile visible, please complete the following information:",
@@ -232,5 +235,15 @@
       "PRESENTATION_TEXT": "Presentation Text",
       "COMPLETE_INFORMATION": "Complete my information"
     }
+  },
+  "SEARCH_PAGE": {
+    "TITLE": "Search",
+    "SELECT_COUNTRY": "Select a country",
+    "COUNTRY_SELECTED": "1 country selected",
+    "COUNTRIES_SELECTED": "countries selected",
+    "SELECT_LANGUAGE": "Select a language",
+    "LANGUAGE_SELECTED": "1 language selected",
+    "LANGUAGES_SELECTED": "languages selected",
+    "NOT_FOUND": "No freelancers found for this query."
   }
 }

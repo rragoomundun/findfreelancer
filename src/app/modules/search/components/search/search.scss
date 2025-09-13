@@ -1,0 +1,81 @@
+#this-search {
+  display: flex;
+
+  input {
+    border-right: none;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+#this-filters div:last-child form {
+  display: flex;
+  align-items: center;
+
+  span {
+    min-width: 32px;
+  }
+}
+
+hr {
+  margin: 0;
+}
+
+#this-search-results {
+  .this-freelancer {
+    display: block;
+    text-decoration: none;
+    padding: 1rem;
+    color: inherit;
+    transition: var(--app-transition-time);
+
+    .this-freelancer-header {
+      display: flex;
+      align-items: center;
+
+      div:first-child {
+        width: 60px;
+        height: 48px;
+        text-align: center;
+
+        img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+
+      div:nth-child(2) {
+        h5 {
+          margin: 0;
+        }
+      }
+    }
+
+    .this-freelancer-title,
+    .this-freelancer-rate-location,
+    .this-freelancer-skills,
+    .this-freelancer-description {
+      margin-left: 0.25rem;
+    }
+  }
+
+  .this-freelancer:hover {
+    background-color: #f1f1f1;
+    transition: var(--app-transition-time);
+  }
+
+  hr {
+    margin: 0;
+  }
+}
+
+#this-search-pagination {
+  li.active a {
+    background-color: var(--app-color-primary-hover);
+  }
+}

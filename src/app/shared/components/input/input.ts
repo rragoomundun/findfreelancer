@@ -29,4 +29,5 @@ export class Input {
   max = input<number>();
   control = input<string>();
   error = input<string>();
+  haveErrorBorder = input<boolean>();
 }
