@@ -30,10 +30,15 @@ export class Home implements OnInit {
   countriesService = inject(CountriesService);
 
   content = signal<HomeModel | null>(null);
+  onGetContent = signal('false');
+
   ngOnInit(): void {
+    this.onGetContent.set('true');
+
     this.homeService.getHomeContent().subscribe({
       next: (content: HomeModel) => {
         this.content.set(content);
+        this.onGetContent.set('success');
       },
     });
   }

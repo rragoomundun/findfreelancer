@@ -29,6 +29,7 @@ import { Countries as CountriesService } from '../../../../shared/services/count
 import { Languages as LanguagesService } from '../../../../shared/services/languages/languages';
 import { Search as SearchService } from '../../services/search/search';
 import { Translation as TranslationService } from '../../../../shared/services/translation/translation';
+import { App as AppService } from '../../../../shared/services/app/app';
 
 import { FreelancerSearchResult } from '../../models/FreelancerSearchResult';
 
@@ -54,6 +55,7 @@ export class Search implements OnInit {
   private titleService = inject(Title);
   private searchService = inject(SearchService);
   private translationService = inject(TranslationService);
+  private appService = inject(AppService);
 
   countriesService = inject(CountriesService);
   languagesService = inject(LanguagesService);
@@ -199,7 +201,9 @@ export class Search implements OnInit {
         this.freelancers.set(result.freelancers);
         this.onSearch.set('success');
 
-        setTimeout(() => window.scrollTo(0, 0));
+        if (this.appService.platform() === 'browser') {
+          setTimeout(() => window.scrollTo(0, 0));
+        }
       },
     });
   }

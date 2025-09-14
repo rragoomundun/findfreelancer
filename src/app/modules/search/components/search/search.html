@@ -132,54 +132,63 @@
   <hr />
 
   <div id="this-search-results" class="mb-3">
-    @for (freelancer of freelancers(); track freelancer) {
-      <a routerLink="/freelancer/{{ freelancer._id }}" class="this-freelancer">
-        <div class="this-freelancer-header mb-3">
-          <div>
-            @if (freelancer.image) {
-              <img
-                [src]="freelancer.image"
-                alt="{{ freelancer.firstName }} {{ freelancer.lastName }} image"
-                class="rounded-circle"
-              />
-            } @else {
-              <span class="fa-regular fa-circle-user fa-3x"></span>
+    @if (onSearch() === "success") {
+      @for (freelancer of freelancers(); track freelancer) {
+        <a
+          routerLink="/freelancer/{{ freelancer._id }}"
+          class="this-freelancer"
+        >
+          <div class="this-freelancer-header mb-3">
+            <div>
+              @if (freelancer.image) {
+                <img
+                  [src]="freelancer.image"
+                  alt="{{ freelancer.firstName }} {{
+                    freelancer.lastName
+                  }} image"
+                  class="rounded-circle"
+                />
+              } @else {
+                <span class="fa-regular fa-circle-user fa-3x"></span>
+              }
+            </div>
+            <div>
+              <h5>{{ freelancer.firstName }} {{ freelancer.lastName }}</h5>
+            </div>
+          </div>
+
+          <div class="this-freelancer-title">
+            <h6>{{ freelancer.title }}</h6>
+          </div>
+
+          <div class="this-freelancer-rate-location mb-3">
+            <span>
+              ${{ freelancer.hourlyRate }}/{{ "GENERAL.HOUR" | translate }}
+            </span>
+            <span>&nbsp;·&nbsp;</span>
+            <span class="fa-solid fa-location-pin"></span>
+            <span>
+              {{
+                countriesService.getCountryName(freelancer.location.countryCode)
+              }}
+            </span>
+          </div>
+
+          <div class="this-freelancer-skills mb-3">
+            @for (skill of freelancer.skills; track skill) {
+              <span class="app-skill">{{ skill }}</span>
             }
           </div>
-          <div>
-            <h5>{{ freelancer.firstName }} {{ freelancer.lastName }}</h5>
+
+          <div class="this-freelancer-description mb-3">
+            <p>{{ freelancer.presentationText }}</p>
           </div>
-        </div>
+        </a>
 
-        <div class="this-freelancer-title">
-          <h6>{{ freelancer.title }}</h6>
-        </div>
-
-        <div class="this-freelancer-rate-location mb-3">
-          <span>
-            ${{ freelancer.hourlyRate }}/{{ "GENERAL.HOUR" | translate }}
-          </span>
-          <span>&nbsp;·&nbsp;</span>
-          <span class="fa-solid fa-location-pin"></span>
-          <span>
-            {{
-              countriesService.getCountryName(freelancer.location.countryCode)
-            }}
-          </span>
-        </div>
-
-        <div class="this-freelancer-skills mb-3">
-          @for (skill of freelancer.skills; track skill) {
-            <span class="app-skill">{{ skill }}</span>
-          }
-        </div>
-
-        <div class="this-freelancer-description mb-3">
-          <p>{{ freelancer.presentationText }}</p>
-        </div>
-      </a>
-
-      <hr />
+        <hr />
+      }
+    } @else if (onSearch() === "true") {
+      <div class="app-loader"></div>
     }
 
     @if (
@@ -191,7 +200,7 @@
     }
   </div>
 
-  @if (pages().length) {
+  @if (onSearch() === "success" && pages().length) {
     <div id="this-search-pagination">
       <ul class="pagination justify-content-center">
         @if (pages().length <= 4) {

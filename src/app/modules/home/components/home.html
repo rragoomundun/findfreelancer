@@ -1,69 +1,76 @@
 <div class="container">
-  <div id="this-carousel">
-    <ngb-carousel #homeCarousel [interval]="3000" [pauseOnHover]="true">
-      @for (carouselItem of content()?.carousel; track carouselItem) {
-        <ng-template ngbSlide>
-          <a
-            [routerLink]="carouselItem.routerLink"
-            [queryParams]="carouselItem.queryParams"
-          >
-            <div class="picsum-img-wrapper">
-              <img
-                [src]="carouselItem.image"
-                class="d-none d-md-inline-block"
-              />
-              <img [src]="carouselItem.imageSmall" class="d-md-none" />
+  @if (onGetContent() === "success") {
+    <div id="this-carousel">
+      <ngb-carousel #homeCarousel [interval]="3000" [pauseOnHover]="true">
+        @for (carouselItem of content()?.carousel; track carouselItem) {
+          <ng-template ngbSlide>
+            <a
+              [routerLink]="carouselItem.routerLink"
+              [queryParams]="carouselItem.queryParams"
+            >
+              <div class="picsum-img-wrapper">
+                <img
+                  [src]="carouselItem.image"
+                  class="d-none d-md-inline-block"
+                />
+                <img [src]="carouselItem.imageSmall" class="d-md-none" />
+              </div>
+            </a>
+          </ng-template>
+        }
+      </ngb-carousel>
+    </div>
+
+    <div id="this-new-freelancers">
+      <h2>{{ "HOME_PAGE.NEW_FREELANCERS" | translate }}</h2>
+
+      <div>
+        @for (freelancer of content()?.freelancers; track freelancer) {
+          <a routerLink="/freelancer/{{ freelancer._id }}" class="card">
+            <div class="this-freelancer-image">
+              @if (freelancer.image) {
+                <img
+                  [src]="freelancer.image"
+                  class="rounded-circle img-fluid"
+                  [alt]="
+                    freelancer.firstName +
+                    ' ' +
+                    freelancer.lastName +
+                    ' picture'
+                  "
+                />
+              } @else {
+                <span class="far fa-user-circle fa-8x"></span>
+              }
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ freelancer.firstName }} {{ freelancer.lastName }}
+              </h5>
+
+              <p class="card-text">
+                {{ freelancer.title }}
+              </p>
+
+              <div class="this-freelancer-infos">
+                <div>
+                  ${{ freelancer.hourlyRate }}/{{ "GENERAL.HOUR" | translate }}
+                </div>
+                <div>
+                  {{
+                    countriesService.getCountryName(
+                      freelancer.location.countryCode
+                    )
+                  }}
+                </div>
+              </div>
             </div>
           </a>
-        </ng-template>
-      }
-    </ngb-carousel>
-  </div>
-
-  <div id="this-new-freelancers">
-    <h2>{{ "HOME_PAGE.NEW_FREELANCERS" | translate }}</h2>
-
-    <div>
-      @for (freelancer of content()?.freelancers; track freelancer) {
-        <a routerLink="/freelancer/{{ freelancer._id }}" class="card">
-          <div class="this-freelancer-image">
-            @if (freelancer.image) {
-              <img
-                [src]="freelancer.image"
-                class="rounded-circle img-fluid"
-                [alt]="
-                  freelancer.firstName + ' ' + freelancer.lastName + ' picture'
-                "
-              />
-            } @else {
-              <span class="far fa-user-circle fa-8x"></span>
-            }
-          </div>
-
-          <div class="card-body">
-            <h5 class="card-title">
-              {{ freelancer.firstName }} {{ freelancer.lastName }}
-            </h5>
-
-            <p class="card-text">
-              {{ freelancer.title }}
-            </p>
-
-            <div class="this-freelancer-infos">
-              <div>
-                ${{ freelancer.hourlyRate }}/{{ "GENERAL.HOUR" | translate }}
-              </div>
-              <div>
-                {{
-                  countriesService.getCountryName(
-                    freelancer.location.countryCode
-                  )
-                }}
-              </div>
-            </div>
-          </div>
-        </a>
-      }
+        }
+      </div>
     </div>
-  </div>
+  } @else if (onGetContent() === "true") {
+    <div class="app-loader"></div>
+  }
 </div>

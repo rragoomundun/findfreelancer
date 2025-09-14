@@ -82,5 +82,7 @@ export class Header {
 
     this.router.navigate(['/search'], { queryParams: { query } });
     this.formGroup().controls.query.setValue('');
+
+    this.hideHamburgerMenu();
   }
 }

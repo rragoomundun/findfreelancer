@@ -69,6 +69,10 @@ hr {
     transition: var(--app-transition-time);
   }
 
+  .app-loader {
+    margin-top: 20vh;
+  }
+
   hr {
     margin: 0;
   }

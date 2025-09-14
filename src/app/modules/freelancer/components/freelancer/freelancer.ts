@@ -56,6 +56,8 @@ export class Freelancer {
           this.titleService.setTitle(
             `${this.freelancer()?.firstName} ${this.freelancer()?.lastName} - ${this.translationService.instant('APP.TITLE')}`,
           );
+
+          window.scrollTo(0, 0);
         },
         error: () => {
           const subscription = this.store
