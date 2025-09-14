@@ -1,0 +1,249 @@
+{
+  "APP": {
+    "TITLE": "FindFreelancer",
+    "AUTHOR": "Raphael RAGOOMUNDUN"
+  },
+  "GENERAL": {
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "LOGOUT": "Logout",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "E-Mail",
+    "PHONE": "Phone",
+    "PASSWORD": "Password",
+    "PASSWORD_CONFIRMATION": "Password Confirmation",
+    "SUBMIT": "Submit",
+    "SUBMITTING": "Submitting",
+    "MODIFY": "Modify",
+    "MODIFYING": "Modyfying...",
+    "DELETE": "Delete",
+    "DELETING": "Deleting",
+    "HOUR": "h",
+    "COUNTRY": "Country",
+    "COUNTRIES": "Countries",
+    "CANCEL": "Cancel",
+    "TITLE": "Title",
+    "ORGANIZATION": "Organization",
+    "TOWN": "Town",
+    "START_DATE": "Start Date",
+    "END_DATE": "End Date",
+    "DESCRIPTION": "Description",
+    "NOW": "Now",
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "SAVING": "Saving...",
+    "SCHOOL": "School",
+    "MIN": "Min",
+    "MAX": "Max",
+    "SELECT_LANGUAGE": "Select a language",
+    "LANGUAGES": {
+      "BASIC": "Basic",
+      "CONVERSATIONAL": "Conversational",
+      "FLUENT": "Fluent",
+      "NATIVE-BILINGUAL": "Native-Bilingual"
+    },
+    "MONTHS": {
+      "JANUARY": "January",
+      "FEBRUARY": "February",
+      "MARCH": "March",
+      "APRIL": "April",
+      "MAY": "May",
+      "JUNE": "June",
+      "JULY": "July",
+      "AUGUST": "August",
+      "SEPTEMBER": "September",
+      "OCTOBER": "October",
+      "NOVEMBER": "November",
+      "DECEMBER": "December"
+    },
+    "ERRORS": {
+      "NO_ACCOUNT_FOR_EMAIL": "There are no account associated to this e-mail.",
+      "NOT_EMAIL": "This e-mail address is invalid.",
+      "EMAIL_IN_USE": "This e-mail address is already in use.",
+      "PASSWORD_MIN_LENGTH_8": "The password must have at least 8 characters.",
+      "PASSWORD_NOT_STRONG": "The password is not strong enough. A strong password must contains at least eight characters, one uppercase letter, one lowercase letter, one number, and one special character.",
+      "PASSWORD_CONFIRMATION_NO_MATCH": "The confirmed password does not match the password."
+    }
+  },
+  "HEADER": {
+    "SEARCH": "Search for freelancers...",
+    "MY_PROFILE": "My Profile"
+  },
+  "FOOTER": {
+    "PRIVACY": "Privacy Policy",
+    "TOS": "Terms of Use"
+  },
+  "COMPONENTS": {
+    "IMAGE_CROPPER": {
+      "TITLE": "Crop your image",
+      "CROP": "Crop"
+    },
+    "SHOW_MORE": {
+      "SHOW_MORE": "Show More",
+      "SHOW_LESS": "Show Less"
+    },
+    "DATE_PICKER_MONTH_YEAR": {
+      "SELECT_MONTH": "Select a month",
+      "SELECT_YEAR": "Select a year"
+    }
+  },
+  "REGISTER_PAGE": {
+    "TITLE": "Register on FindFreelancer",
+    "TERMS": "By registering on FindFreelancer you agree to our <a href='https://findfreelancer.com/terms' target='_blank'>Terms of Service</a> and <a href='https://findfreelancer.com/privacy' target='_blank'>Privacy Policy</a>.",
+    "REGISTER": "Register",
+    "REGISTRATION": "Registration...",
+    "REGISTRATION_SUCCESSFUL": "Registration successful. An email has been sent to your address. Consult it to confirm your account.",
+    "ERRORS": {
+      "ACCOUNT_CREATION": "Impossible to create your account. Try again later."
+    }
+  },
+  "REGISTER_CONFIRM_PAGE": {
+    "TITLE": "Account Confirmation",
+    "CONFIRMING": "Confirming your account...",
+    "SUCCESS": "Your account has been confirmed. You are going to be redirected...",
+    "ERROR": "Impossible to confirm this account."
+  },
+  "LOGIN_PAGE": {
+    "TITLE": "Login on FindFreelancer",
+    "LOGIN...": "Login...",
+    "PASSWORD_FORGOTTEN": "Password forgotten?",
+    "ERRORS": {
+      "INVALID": "The data entered is invalid.",
+      "UNCONFIRMED": "This account is unconfirmed."
+    }
+  },
+  "PASSWORD_FORGOTTEN_PAGE": {
+    "TITLE": "Password Forgotten",
+    "ENTER_EMAIL": "Enter your e-mail address below in order to recover your account.",
+    "SUCCESS": "An email has been sent to this adress. Please consult it in order to recover your account.",
+    "ERRORS": {
+      "UNCONFIRMED": "This account is unconfirmed.",
+      "ALREADY_RECOVERING": "A recovery procedure is already is progress.",
+      "EMAIL_SENDING_FAILED": "Cannot send recovery e-mail."
+    }
+  },
+  "RESET_PASSWORD_PAGE": {
+    "TITLE": "Reset Password",
+    "ENTER_PASSWORD": "Enter your new password below.",
+    "SUCCESS": "Your password has been changed. You are going to be redirected...",
+    "ERRORS": {
+      "INVALID_TOKEN": "Impossible to set a new password."
+    }
+  },
+  "HOME_PAGE": {
+    "TITLE": "Find the best freelancers",
+    "NEW_FREELANCERS": "New Freelancers"
+  },
+  "SETTINGS_PAGE": {
+    "TITLE": "Settings",
+    "TITLE_IDENTITY": "Identity Settings",
+    "TITLE_SECURITY": "Security Settings",
+    "TITLE_DELETE_ACCOUNT": "Delete Account",
+    "TABS": {
+      "IDENTITY": {
+        "TITLE": "Identity",
+        "INFORMATIONS_UPDATED": "Informations updated."
+      },
+      "SECURITY": {
+        "TITLE": "Security",
+        "PASSWORD_UPDATED": "Password updated."
+      },
+      "DELETE_ACCOUNT": {
+        "TITLE": "Delete Account",
+        "WARNING": "WARNING: you are about to delete your account on FindFreelancer. After this operation your account and all its data will be deleted. It is not possible to recover from this operation. If you are sure that you want to proceed, click on the Delete button.",
+        "ACCOUNT_DELETED": "Your account have been delete. You are going to be redirected..."
+      }
+    }
+  },
+  "EDIT_PROFILE_PAGE": {
+    "TITLE": "Edit Profile",
+    "TITLE_GENERAL": "General Profile Information",
+    "TITLE_PRESENTATION": "Presentation Profile Information",
+    "TITLE_SKILLS": "Skills Profile Information",
+    "TITLE_EXPERIENCES": "Experiences Profile Information",
+    "TITLE_EDUCATION": "Education Profile Information",
+    "TITLE_LANGUAGES": "Languages Profile Information",
+    "TITLE_CONTACT": "Contact Profile Information",
+    "TABS": {
+      "GENERAL": {
+        "TITLE": "General",
+        "CHANGE_PICTURE": "Change Picture",
+        "DELETE_PICTURE": "Delete Picture",
+        "HOURLY_RATE": "Hourly Rate",
+        "INFORMATIONS_UPDATED": "General informations updated.",
+        "ERRORS": {
+          "IMAGE_SIZE": "Image is too big. Please select an image no bigger than 5MB."
+        }
+      },
+      "PRESENTATION": {
+        "TITLE": "Presentation",
+        "PRESENTATION_TEXT": "Presentation Text",
+        "INFORMATIONS_UPDATED": "Presentation informations updated."
+      },
+      "SKILLS": {
+        "TITLE": "Skills",
+        "INFORMATIONS_UPDATED": "Skills updated."
+      },
+      "EXPERIENCES": {
+        "TITLE": "Experiences",
+        "ADD_EXPERIENCE": "Add New Experience",
+        "COMPONENTS": {
+          "PROFILE_EDIT_EXPERIENCES_EDIT": {
+            "TITLE": "Edit Experience",
+            "WORK_HERE": "I currently work here."
+          }
+        }
+      },
+      "EDUCATION": {
+        "TITLE": "Education",
+        "ADD_EDUCATION": "Add New Education",
+        "COMPONENTS": {
+          "PROFILE_EDIT_EDUCATION_EDIT": {
+            "TITLE": "Edit Education",
+            "STUDYING_HERE": "I currently study here."
+          }
+        }
+      },
+      "LANGUAGES": {
+        "TITLE": "Languages",
+        "SELECT_LEVEL": "Select a level",
+        "ADD_LANGUAGE": "Add Language",
+        "LANGUAGES_UPDATED": "Languages successfully updated."
+      },
+      "CONTACT": {
+        "TITLE": "Contact",
+        "INFORMATIONS_UPDATED": "Contact informations updated."
+      }
+    }
+  },
+  "FREELANCER_PAGE": {
+    "TODO": "ADD TITLE",
+    "SKILLS": "Skills",
+    "EXPERIENCES": "Experiences",
+    "EDUCATION": "Education",
+    "LANGUAGES": "Languages",
+    "CONTACT": "Contact",
+    "404": "404: Not Found :(",
+    "NOT_FOUND": "Cannot find freelancer",
+    "NOT_FOUND_TITLE": "Freelancer Not Found",
+    "INVISIBLE": {
+      "HEADING": "Profile Hidden",
+      "MESSAGE": "Your profile is currently hidden because it is incomplete. To make your profile visible, please complete the following information:",
+      "HOURLY_RATE": "Hourly Rate",
+      "TITLE": "Title",
+      "PRESENTATION_TEXT": "Presentation Text",
+      "COMPLETE_INFORMATION": "Complete my information"
+    }
+  },
+  "SEARCH_PAGE": {
+    "TITLE": "Search",
+    "SELECT_COUNTRY": "Select a country",
+    "COUNTRY_SELECTED": "1 country selected",
+    "COUNTRIES_SELECTED": "countries selected",
+    "SELECT_LANGUAGE": "Select a language",
+    "LANGUAGE_SELECTED": "1 language selected",
+    "LANGUAGES_SELECTED": "languages selected",
+    "NOT_FOUND": "No freelancers found for this query."
+  }
+}
