@@ -90,7 +90,7 @@
   },
   "REGISTER_PAGE": {
     "TITLE": "Register on FindFreelancer",
-    "TERMS": "By registering on FindFreelancer you agree to our <a href='https://findfreelancer.com/terms' target='_blank'>Terms of Service</a> and <a href='https://markedit.net/privacy' target='_blank'>Privacy Policy</a>.",
+    "TERMS": "By registering on FindFreelancer you agree to our <a href='https://findfreelancer.com/terms' target='_blank'>Terms of Service</a> and <a href='https://findfreelancer.com/privacy' target='_blank'>Privacy Policy</a>.",
     "REGISTER": "Register",
     "REGISTRATION": "Registration...",
     "REGISTRATION_SUCCESSFUL": "Registration successful. An email has been sent to your address. Consult it to confirm your account.",

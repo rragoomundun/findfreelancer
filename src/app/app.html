@@ -1,5 +1,5 @@
 @if (
-  appService.platform() === "server" || (onGetFreelancer$ | async) === "true"
+  appService.platform() === "browser" && (onGetFreelancer$ | async) === "true"
 ) {
   <div id="this-loader"></div>
 } @else {
