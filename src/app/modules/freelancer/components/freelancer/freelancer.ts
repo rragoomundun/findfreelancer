@@ -1,5 +1,5 @@
 import { Component, signal, inject, DestroyRef } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Params, RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
@@ -43,44 +43,46 @@ export class Freelancer {
   onGetFreelancer = signal('false');
 
   constructor() {
-    const { id } = this.activatedRoute.snapshot.params;
+    this.activatedRoute.params.subscribe((params: Params) => {
+      const { id } = params;
 
-    this.onGetFreelancer.set('true');
+      this.onGetFreelancer.set('true');
 
-    this.freelancerService.getFreelancer(id).subscribe({
-      next: (freelancer: FreelancerProfile) => {
-        this.freelancer.set(freelancer);
-        this.onGetFreelancer.set('success');
+      this.freelancerService.getFreelancer(id).subscribe({
+        next: (freelancer: FreelancerProfile) => {
+          this.freelancer.set(freelancer);
+          this.onGetFreelancer.set('success');
 
-        this.titleService.setTitle(
-          `${this.freelancer()?.firstName} ${this.freelancer()?.lastName} - ${this.translationService.instant('APP.TITLE')}`,
-        );
-      },
-      error: () => {
-        const subscription = this.store
-          .select(selectFreelancer)
-          .subscribe((freelancer: FreelancerModel | null | undefined) => {
-            if (freelancer?._id === id) {
-              this.freelancerService.getVisibility(id).subscribe({
-                next: (visibilityInfos: FreelancerVisibility) => {
-                  this.visibilityInfos.set(visibilityInfos);
-                  this.onGetFreelancer.set('invisible');
-                },
-              });
+          this.titleService.setTitle(
+            `${this.freelancer()?.firstName} ${this.freelancer()?.lastName} - ${this.translationService.instant('APP.TITLE')}`,
+          );
+        },
+        error: () => {
+          const subscription = this.store
+            .select(selectFreelancer)
+            .subscribe((freelancer: FreelancerModel | null | undefined) => {
+              if (freelancer?._id === id) {
+                this.freelancerService.getVisibility(id).subscribe({
+                  next: (visibilityInfos: FreelancerVisibility) => {
+                    this.visibilityInfos.set(visibilityInfos);
+                    this.onGetFreelancer.set('invisible');
+                  },
+                });
 
-              this.titleService.setTitle(
-                `${this.translationService.instant('FREELANCER_PAGE.INVISIBLE.HEADING')} - ${this.translationService.instant('APP.TITLE')}`,
-              );
-            } else {
-              this.titleService.setTitle(
-                `${this.translationService.instant('FREELANCER_PAGE.NOT_FOUND_TITLE')} - ${this.translationService.instant('APP.TITLE')}`,
-              );
-              this.onGetFreelancer.set('error');
-            }
-          });
+                this.titleService.setTitle(
+                  `${this.translationService.instant('FREELANCER_PAGE.INVISIBLE.HEADING')} - ${this.translationService.instant('APP.TITLE')}`,
+                );
+              } else {
+                this.titleService.setTitle(
+                  `${this.translationService.instant('FREELANCER_PAGE.NOT_FOUND_TITLE')} - ${this.translationService.instant('APP.TITLE')}`,
+                );
+                this.onGetFreelancer.set('error');
+              }
+            });
 
-        this.destroyRef.onDestroy(() => subscription.unsubscribe());
-      },
+          this.destroyRef.onDestroy(() => subscription.unsubscribe());
+        },
+      });
     });
   }
 }
