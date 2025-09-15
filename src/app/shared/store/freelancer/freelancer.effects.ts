@@ -31,17 +31,21 @@ export class FreelancerEffects {
     ),
   );
 
-  logoutFreelancer = createEffect(() =>
-    this.actions$.pipe(
-      ofType(FreelancerActions.logoutFreelancer),
-      exhaustMap(() =>
-        this.authService.logout().pipe(
-          tap(() => {
-            window.location.href = window.location.origin;
-          }),
+  logoutFreelancer = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(FreelancerActions.logoutFreelancer),
+        exhaustMap(() =>
+          this.authService.logout().pipe(
+            tap(() => {
+              window.location.href = window.location.origin;
+            }),
+          ),
         ),
       ),
-    ),
+    {
+      dispatch: false,
+    },
   );
 
   updateFreelancerSettingsIdentity = createEffect(() =>
