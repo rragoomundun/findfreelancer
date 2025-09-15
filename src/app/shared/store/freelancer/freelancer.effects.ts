@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, exhaustMap, mergeMap, catchError, of, tap } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 import * as FreelancerActions from './freelancer.actions';
 
@@ -16,6 +17,7 @@ export class FreelancerEffects {
   private actions$ = inject(Actions);
   private freelancerService = inject(FreelancerService);
   private authService = inject(AuthService);
+  private cookieService = inject(CookieService);
 
   getFreelancer = createEffect(() =>
     this.actions$.pipe(
@@ -38,6 +40,7 @@ export class FreelancerEffects {
         exhaustMap(() =>
           this.authService.logout().pipe(
             tap(() => {
+              this.cookieService.delete('token');
               window.location.href = window.location.origin;
             }),
           ),
