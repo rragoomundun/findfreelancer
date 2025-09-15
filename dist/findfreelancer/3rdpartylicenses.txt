@@ -43,6 +43,11 @@ https://github.com/cartant/rxjs-etc by Nicholas Jamieson, MIT licensed. See the
 file header for details.
 
 --------------------------------------------------------------------------------
+Package: ngx-cookie-service
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
 Package: ngx-image-cropper
 License: "MIT"
 
