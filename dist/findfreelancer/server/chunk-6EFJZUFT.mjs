@@ -1,2 +1,0 @@
-import './polyfills.server.mjs';
-import{T as r,Tc as l,X as n}from"./chunk-R3X4SGD5.mjs";var a=class i{API_PREFIX="file";http=n(l);uploadFile(t){let e=new FormData;return e.append("file",t.file),this.http.post(`${this.API_PREFIX}`,e,{withCredentials:!0})}deleteFile(t){return this.http.delete(this.API_PREFIX,{body:t,withCredentials:!0})}static \u0275fac=function(e){return new(e||i)};static \u0275prov=r({token:i,factory:i.\u0275fac,providedIn:"root"})};export{a};
