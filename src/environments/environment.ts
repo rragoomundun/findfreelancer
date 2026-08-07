@@ -1,3 +1,3 @@
 export const environment = {
-  API_URL: 'http://api-findfreelancer.r3tests.net',
+  API_URL: 'https://api-findfreelancer.r3tests.net',
 };
